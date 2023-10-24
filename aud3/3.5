@@ -1,0 +1,15 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    float priceProduct, totalPriceProduct, priceRate;
+    int numRate, interest;
+    cin >> priceProduct >> numRate >> interest;
+    totalPriceProduct = priceProduct * (1 + interest/100.0);
+    priceRate = totalPriceProduct / numRate;
+
+    cout << "Total price for the product: " << totalPriceProduct << endl;
+    cout << "Payment per rate: " << priceRate << endl;
+    return 0;
+}
