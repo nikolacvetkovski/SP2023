@@ -1,0 +1,38 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    float a,b,c;
+    cin >> a >> b >> c;
+
+    if((a+b <= c) || (a+c <= b) || (b+c <= a)) {
+        cout << "Cannot construct a triangle!" << endl;
+        return 0;
+    }
+    else {
+        if(a >= b) {
+            float tmp = a;
+            a = b;
+            b = tmp;
+        }
+        if(a >= c) {
+            float tmp = a;
+            a = c;
+            c = tmp;
+        }
+        if(c >= b) {
+            float tmp = c;
+            c = b;
+            b = tmp;
+        }
+        if(c * c == a * a + b * b) {
+            cout << "Equilateral triangle" << endl;
+            cout << "Area of the triangle is: " << a * b / 2 << endl;
+        }
+        else {
+            cout << "NOT an Equilateral triangle!" << endl;
+        }
+    }
+    return 0;
+}
