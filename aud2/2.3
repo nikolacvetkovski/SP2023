@@ -1,0 +1,14 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    float a = 5, b = 7.5, c = 10.2;
+    float l = a + b + c;
+    float s = l / 2;
+    float p = s * (s - a) * (s - b) * (s - c);
+
+    cout << "Perimeter of the triangle is: " << l << endl;
+    cout << "Square of the triangle is: " << p << endl;
+    return 0;
+}
