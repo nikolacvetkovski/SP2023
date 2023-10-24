@@ -1,0 +1,39 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int examPoints, grade = 0, lastDigit;
+    char sign;
+    cin >> examPoints;
+    if(examPoints <= 50) {
+        grade = 5;
+    }
+    else if(examPoints > 50 && examPoints <= 60) {
+        grade = 6;
+    }
+    else if(examPoints > 60 && examPoints <= 70) {
+        grade = 7;
+    }
+    else if(examPoints > 70 && examPoints <= 80) {
+        grade = 8;
+    }
+    else if(examPoints > 80 && examPoints <= 90) {
+        grade = 9;
+    }
+    else {
+        grade = 10;
+    }
+
+    lastDigit = examPoints % 10;
+    if(grade != 5) {
+        if(lastDigit >= 1 && lastDigit <= 3) {
+            sign = '-';
+        }
+        else if(grade != 10 && (lastDigit >= 8 || lastDigit == 0)) {
+            sign = '+';
+        }
+    }
+    cout << grade << sign << endl;
+    return 0;
+}
