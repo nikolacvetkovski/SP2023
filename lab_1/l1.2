@@ -1,0 +1,15 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int days, y, m, d;
+    cin >> days;
+
+    y = days / 365;
+    m = days % 365 / 30;
+    d = days % 365 % 30;
+
+    cout << "Years: " << y << ", " << "months: " << m << ", " << "days: " << d << endl;
+    return 0;
+}
