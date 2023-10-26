@@ -1,0 +1,22 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int number;
+    cin >> number;
+
+    int d1, d2, d3, d4, d5;
+    d1 = number / 10000;
+    d2 = number / 1000 % 10;
+    d3 = number / 100 % 10;
+    d4 = number / 10 % 10;
+    d5 = number % 10;
+
+    int newNumber = (d2 * 100) + (d3 * 10) + d4;
+    int sum = d1 + d5;
+
+    cout << newNumber << endl;
+    cout << sum << endl;
+    return 0;
+}
