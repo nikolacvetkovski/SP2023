@@ -1,0 +1,20 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+  int from, to, digit, opp;
+    cin >> from >> to;
+    for(int i = from; i <= to; i++) {
+        int temp = i;
+        opp = 0;
+        while(temp > 0) {
+            digit = temp % 10;
+            opp = opp * 10 + digit;
+            temp /= 10;
+        }
+        if(i == opp) {
+            cout << i << " " << endl;
+        }
+    }
+    return 0;
+}
