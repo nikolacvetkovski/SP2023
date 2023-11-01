@@ -1,0 +1,30 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int fiveDigitNumber, sum = 0;
+    cin >> fiveDigitNumber;
+
+    sum = (fiveDigitNumber / 1000 % 10) + (fiveDigitNumber / 100 % 10);
+
+    // 22456
+    if(sum != 0) {
+        if(fiveDigitNumber % sum == 0) {
+            if((fiveDigitNumber / 10000) < (fiveDigitNumber / 100 % 10) &&
+            (fiveDigitNumber / 100 % 10) < (fiveDigitNumber % 10) &&
+            (fiveDigitNumber / 10000) < (fiveDigitNumber % 10)) {
+                cout << "1";
+            }
+            else {
+                cout <<"0";
+            }
+        }
+        else {
+            cout << "0";
+        }
+    }
+    else {
+        cout << "-1";
+    }
+    return 0;
+}
