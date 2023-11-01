@@ -1,0 +1,17 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+  int d1, d2, d3, d4;
+    for(int i=1000; i<10000; i++) {
+        d1 = i / 1000;
+        d2 = i / 100 % 10;
+        d3 = i / 10 % 10;
+        d4 = i % 10;
+
+        if((d2 + d3 + d4) == d1) {
+            cout << i << " ";
+        }
+    }
+    return 0;
+}
