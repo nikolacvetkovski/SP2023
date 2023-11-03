@@ -1,0 +1,29 @@
+#include <iostream>
+using namespace std;
+#include <cmath>
+
+int main()
+{
+    int number, sumEven, sumOdd, position = 1;
+    sumEven = sumOdd = 0;
+    while(cin >> number) {
+        if(position % 2 == 0) {
+            sumEven += number;
+        }
+        else {
+            sumOdd += number;
+        }
+        ++position;
+    }
+    
+    cout << "Sum of the odd positions: " << sumOdd << endl;
+    cout << "Sum of the even positions: " << sumEven << endl;
+    
+    if(abs(sumEven - sumOdd) < 10) {
+        cout << "The two sums are alike!" << endl;
+    }
+    else {
+        cout << "The two sums are different from each other!" << endl;
+    }
+    return 0;
+}
