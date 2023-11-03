@@ -1,0 +1,28 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int number, maxNumber1 = 0, maxNumber2 = 0, maxPos1, maxPos2, counter = 1;
+    
+    while(cin >> number) {
+        if(number > maxNumber1) {
+            maxNumber2 = maxNumber1;
+            maxPos2 = maxPos1;
+            maxNumber1 = number;
+            maxPos1 = counter;
+        }
+        else {
+            if(number > maxNumber2) {
+                maxNumber2 = number;
+                maxPos2 = counter;
+            }
+        }
+        ++counter;
+    }
+    
+    cout << "Maximum number is: " << maxNumber1 << " which was entered " << maxPos1 << " in a row" << endl;
+    cout << "Second maximum number is: " << maxNumber2 << " which was entered " << maxPos2 << " in a row,";
+    cout << " out of " << counter - 1 << " entered numbers!" << endl;
+    return 0;
+}
