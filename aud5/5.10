@@ -17,6 +17,9 @@ int main()
         }
         ++counter;
     }
-    cout << maxSum << endl << posprev << endl << poscurr << endl;
+
+if(counter > 2 && sum > 0)  {
+ cout << maxSum << endl << posprev << endl << poscurr << endl;
+}
     return 0;
 }
