@@ -1,0 +1,47 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int apple, raspberries, banana;
+    double sum = 0.0;
+    bool studentCard;
+
+    cin >> apple >> raspberries >> banana >> studentCard;
+
+    if(apple == 200) {
+        sum += ((apple/100) * 30) * 0.7;
+    }
+    else if (apple >= 500) {
+        sum += ((apple/100) * 30) * 0.5;
+    }
+    else {
+        sum += (apple/100) * 30;
+    }
+
+    if(raspberries == 200) {
+        sum += ((raspberries/100) * 50) * 0.7;
+    }
+    else if (raspberries >= 500) {
+        sum += ((raspberries/100) * 50) * 0.5;
+    }
+    else {
+        sum += (raspberries/100) * 50;
+    }
+
+    if(banana == 200) {
+        sum += ((banana/100) * 40) * 0.7;
+    }
+    else if (banana >= 500) {
+        sum += ((banana/100) * 40) * 0.5;
+    }
+    else {
+        sum += (banana/100) * 40;
+    }
+
+    if(studentCard) {
+        sum -= 140;
+    }
+    cout << sum;
+    
+    return 0;
+}
