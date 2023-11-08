@@ -1,0 +1,56 @@
+#include <iostream>
+#include <cstring>
+using namespace std;
+
+int main() {
+    int numPopcorn, numDrink, sum = 0, priceBillet = 200;
+    char typeMovie[10], typePopcorn, typeDrink[10], day[10];
+    bool isVisa;
+    
+    cin >> typeMovie >> typePopcorn >> numPopcorn >> typeDrink >> numDrink >> day >> isVisa;
+    
+    if(strcmp(typeMovie, "comedy") == 0) {
+        sum += (priceBillet + 20) * 3;
+    }
+    
+    else if(strcmp(typeMovie, "action") == 0) {
+        sum += (priceBillet + 40) * 3;
+    }
+    
+    else if(strcmp(typeMovie, "romance") == 0) {
+        sum += (priceBillet + 30) * 3;
+    }
+    
+    if(strcmp(day, "Wednesday") == 0) {
+        if(isVisa) {
+            sum *= 0.5;
+        }
+    }
+    
+    if(typePopcorn == 'S') {
+        sum += numPopcorn * 100;
+    }
+    
+    else if(typePopcorn == 'M') {
+        sum += numPopcorn * 150;
+    }
+    
+    else if(typePopcorn == 'L') {
+        sum += numPopcorn * 200;
+    }
+    
+    if(strcmp(typeDrink, "Water") == 0) {
+        sum += numDrink * 80;
+    }
+    
+    else if(strcmp(typeDrink, "Fanta") == 0 || strcmp(typeDrink, "CocaCola") == 0 || strcmp(typeDrink, "Sprite") == 0) {
+        sum += numDrink * 100;
+    }
+    
+    else if(strcmp(typeDrink, "IceTea") == 0) {
+        sum += numDrink * 120;
+    }
+    
+    cout << sum;
+    return 0;
+}
