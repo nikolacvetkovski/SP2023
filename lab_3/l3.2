@@ -1,0 +1,47 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+  int points, i = 0, sumOfPoints = 0, grade = 0;
+  bool HigherGrade = false, isPass = false;
+  
+  while(i < 5) {
+      cin >> points;
+      sumOfPoints += points;
+      ++i;
+  }
+  
+  if(sumOfPoints < 50) {
+      grade = 5;
+      isPass = false;
+  }
+  else {
+      isPass = true;
+      if(sumOfPoints >= 50 && sumOfPoints <= 60) {
+          grade = 6;
+      }
+      if(sumOfPoints > 60 && sumOfPoints <= 70) {
+          grade = 7;
+      }
+      if(sumOfPoints > 70 && sumOfPoints <= 80) {
+          grade = 8;
+      }
+      if(sumOfPoints > 80 && sumOfPoints <= 90) {
+          grade = 9;
+      }
+      if(sumOfPoints > 90) {
+          grade = 10;
+      }
+  }
+  
+  cout << "Ocenka: " << grade << ", poeni: " << sumOfPoints << endl;
+  
+  if(sumOfPoints % 10 == 0) {
+          cout << "1";
+      }
+      else {
+          cout << "0";
+      }
+  
+  return 0;
+}
