@@ -1,0 +1,21 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int prag1, prag2, income, tax;
+    double procent0, procent1, procent2;
+    cin >> procent0 >> prag1 >> procent1 >> prag2 >> procent2 >> income;
+    
+    if(income <= prag1) {
+        tax = income * (1 + procent0 / 100);
+    } 
+    else if(income > prag1 && income <= prag2) {
+        tax = (prag1 * (1 + procent0 / 100)) + ((income - prag1) * (1 + procent1 / 100));
+    }
+    else if(income > prag2) {
+        tax = (prag1 * (1 + procent0 / 100)) + ((prag2 - prag1) * (1 + procent1 / 100)) + ((income - prag1 - (prag2 - prag1)) * (1 + procent2 / 100));
+    }
+    
+    cout << tax - income;
+    return 0;
+}
