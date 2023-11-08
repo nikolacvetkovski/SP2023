@@ -1,0 +1,37 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int numOfQueue;
+    double hours, minutes;
+    bool isServed = false;
+    cin >> numOfQueue;
+    --numOfQueue;
+    
+    if((numOfQueue * 5) < 120) {  
+        hours = (numOfQueue * 5) / 60;
+        minutes = (numOfQueue * 5) % 60;
+        isServed = true;
+    }
+    else if((numOfQueue * 5) > 120 && (numOfQueue * 5) <= 180) {
+        hours = (numOfQueue * 5 + 30) / 60;
+        minutes = (numOfQueue * 5 + 30) % 60;
+        isServed = true;
+    }
+    else if((numOfQueue * 5) > 180 && (numOfQueue * 5) <= 300) {
+        hours = (numOfQueue * 5 + 60) / 60;
+        minutes = (numOfQueue * 5 + 60) % 60;
+        isServed = true;
+    }
+    else {
+        isServed = false;
+        cout << "Student will not be served at all!" << endl;
+    }
+    
+    if(isServed) {
+        cout << "Hours: " << hours;
+        cout << ", minutes: " << minutes << endl;
+    }
+    
+    return 0;
+}
