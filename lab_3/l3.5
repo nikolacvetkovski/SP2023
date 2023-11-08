@@ -1,0 +1,29 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int numberOfCredits, yearOfEnrollment, finalCredits;
+    double points = 0.0, GDP;
+   
+    cin >> numberOfCredits >> yearOfEnrollment >> GDP;
+    
+    if(numberOfCredits > 100 && GDP > 8) {
+        finalCredits = (2023 - yearOfEnrollment) * 60;
+        points = (float) numberOfCredits / finalCredits * 10 + (GDP - 8.5) * 6.5;
+        if(numberOfCredits > 240) {
+            cout << "Needs to graduate!";
+            cout << " Points: " << points;
+        }
+        else if(GDP > 9) {
+                cout << "Great student!";
+                cout << " Points: " << points;
+        }
+        else {
+                cout << "Points: " << points;
+        }
+    }
+    else {
+        cout << "Points: " << points;
+    }
+    return 0;
+}
