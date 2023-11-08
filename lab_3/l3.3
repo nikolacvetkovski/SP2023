@@ -1,0 +1,34 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int numOne, numTwo, minutes;
+    double price = 0.0;
+    bool isTrue = false;
+    cin >> numOne >> numTwo >> minutes;
+
+    if(minutes > 30) {
+        price = (30 * 3) + ((minutes - 30) * 2);
+    }
+    else {
+        price = minutes * 3;
+    }
+
+    int digit1 = numOne / 1000000 % 100;
+    int digit2 = numTwo / 1000000 % 100;
+    if((digit1 == 71 || digit1 == 72 || digit1 == 73) && (digit2 == 71 || digit2 == 72 || digit2 == 73)) {
+        isTrue = true;
+    }
+    else if((digit1 == 74 || digit1 == 75 || digit1 == 76) && (digit2 == 74 || digit2 == 75 || digit2 == 76)) {
+        isTrue = true;
+    }
+    
+    if(isTrue) {
+       price = price * 0.7;
+       cout << price;
+    }
+    else {
+         cout << price;
+    }
+    return 0;
+}
