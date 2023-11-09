@@ -1,0 +1,34 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int i = 0, iznos, sumaDanok;
+    char tipDanok;
+    
+    while(i < 3) {
+        cin >> iznos >> tipDanok;
+        if(tipDanok == 'A') {
+            iznos *= 0.18;
+        }
+        else if(tipDanok == 'B') {
+            iznos *= 0.10;
+        }
+        else if(tipDanok == 'C') {
+            iznos *= 0.05;
+        }
+        else if(tipDanok == 'D') {
+            iznos *= 1.0;
+        }
+        else {
+            iznos *= 0.15;
+        }
+        ++i;
+        
+        sumaDanok += iznos;
+    }
+    
+    cout << "Total VAT of the receipts is equal to: " << sumaDanok << "den." << endl;
+    cout << "Total refund VAT of the receipts is equal to: " << sumaDanok * 0.15 << "den." << endl;
+
+    return 0;
+}
