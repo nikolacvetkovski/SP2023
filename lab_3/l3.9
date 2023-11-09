@@ -1,0 +1,27 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int g1, g2, g3, g4, g5, g6;
+    cin >> g1 >> g2 >> g3 >> g4 >> g5 >> g6;
+
+    double av1, av2;
+    av1 = (g1 + g2 + g3 + g4 + g5) / 5.0;
+    av2 = (g1 + g2 + g3 + g4 + g5 + g6) / 6.0;
+
+    if(av1 < av2) {
+        cout << "Enrolled 6 subjects" << endl;
+        if(av2 >= 8.5) {
+            cout << "1";
+        }
+        else {
+            cout << "0";
+        }
+    }
+    else {
+        cout << "Enrolled 5 subjects" << endl;
+        cout << "0" << endl;
+    }
+
+    return 0;
+}
