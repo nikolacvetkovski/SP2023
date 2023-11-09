@@ -7,20 +7,42 @@ int main() {
     
     while(i < 3) {
         cin >> iznos >> tipDanok;
-        if(tipDanok == 'A') {
-            iznos *= 0.18;
-        }
-        else if(tipDanok == 'B') {
-            iznos *= 0.10;
-        }
-        else if(tipDanok == 'C') {
-            iznos *= 0.05;
-        }
-        else if(tipDanok == 'D') {
-            iznos *= 1.0;
-        }
-        else {
-            iznos *= 0.15;
+        if(iznos > 0) {
+            if(iznos < 30000) {
+                if(tipDanok == 'A') {
+                    iznos *= 0.18;
+                }
+                else if(tipDanok == 'B') {
+                    iznos *= 0.10;
+                }
+                else if(tipDanok == 'C') {
+                    iznos *= 0.05;
+                }
+                else if(tipDanok == 'D') {
+                    iznos *= 1.0;
+                }
+                else {
+                    iznos *= 0.15;
+                }
+             }
+            else {
+                iznos = 30000;
+                if(tipDanok == 'A') {
+                    iznos *= 0.18;
+                }
+                else if(tipDanok == 'B') {
+                    iznos *= 0.10;
+                }
+                else if(tipDanok == 'C') {
+                    iznos *= 0.05;
+                }
+                else if(tipDanok == 'D') {
+                    iznos *= 1.0;
+                }
+                else {
+                    iznos *= 0.15;
+                }
+            }
         }
         ++i;
         
@@ -28,7 +50,13 @@ int main() {
     }
     
     cout << "Total VAT of the receipts is equal to: " << sumaDanok << "den." << endl;
-    cout << "Total refund VAT of the receipts is equal to: " << sumaDanok * 0.15 << "den." << endl;
+    
+    if((sumaDanok * 0.15) <= 2100) {
+         cout << "Total refund VAT of the receipts is equal to: " << sumaDanok * 0.15 << "den." << endl;
+    }
+    else {
+        cout << "Total refund VAT of the receipts is equal to: 2100den." << endl;
+    }
 
     return 0;
 }
