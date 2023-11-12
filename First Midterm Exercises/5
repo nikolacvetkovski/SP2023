@@ -1,0 +1,41 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+   int a, b;
+   bool isEven = false;
+   cin >> a >> b;
+   
+   if(a <= 0 || b <= 0) {
+       cout << "Invalid input" << endl;
+       return 0;
+   }
+   
+   if(b > a) {
+       int temp = b;
+       b = a;
+       a = temp;
+   }
+   
+   int temp_a = a, temp_b = b;
+   while(temp_a > 0) {
+       if(temp_a / 10 % 10 == temp_b % 10) {
+           isEven = true;
+       }
+       else {
+           isEven = false;
+           break;
+       }
+       temp_a /= 100;
+       temp_b /= 10;
+   }
+   
+   if(isEven) {
+       cout << "PAREN" << endl;
+   }
+   else {
+       cout << "NE" << endl;
+   }
+    
+    return 0;
+}
