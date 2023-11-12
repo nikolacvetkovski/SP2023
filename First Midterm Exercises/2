@@ -1,0 +1,28 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n;
+    cin >> n;
+    
+    if(n < 10) {
+        cout << "Brojot ne e validen" << endl;
+        return 0;
+    }
+    
+    for(int i=n-1; i>0; i--) {
+        int temp = i, reverseNumber = 0, counter = 0;
+        while(temp > 0) {
+            ++counter;
+            int digit = temp % 10;
+            reverseNumber = reverseNumber * 10 + digit; 
+            temp /= 10;
+        }
+        if(reverseNumber % counter == 0) {
+            cout << i << endl;
+            break;
+        }
+    }
+    
+    return 0;
+}
