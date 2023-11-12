@@ -1,0 +1,23 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    char sign;
+    int sum = 0, number = 0;
+    while(cin >> noskipws >> sign) {
+        if(sign == '!') {
+            break;
+        }
+        
+        if(isdigit(sign)) {
+            number = (number * 10) + (sign - '0');
+        }
+        else {
+            sum += number;
+            number = 0;
+        }
+    }
+    cout << sum + number << endl;
+    
+    return 0;
+}
