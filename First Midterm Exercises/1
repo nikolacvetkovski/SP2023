@@ -1,0 +1,30 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int m, n;
+    bool isEven = false;
+    cin >> m >> n;
+    for(int i=m; i<=n; i++) {
+        int temp = i;
+        while(temp > 0) {
+            int digit = temp % 10;
+            if(digit % 2 == 0) {
+                isEven = true;
+            }
+            else {
+                isEven = false;
+                break;
+            }
+            temp /= 10;
+        }
+        if(isEven) {
+            cout << i << endl;
+            break;
+        }
+    }
+    if(!isEven) {
+        cout << "NE" << endl;
+    }
+    return 0;
+}
