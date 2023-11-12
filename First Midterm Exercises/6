@@ -1,0 +1,23 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+   int a, b, z, counter = 0, counterPair = 0;
+   cin >> z;
+   
+   while(cin >> a >> b) {
+       if(a == 0 && b == 0) {
+           break;
+       }
+       ++counterPair;
+       
+       if(z == a + b) {
+           ++counter;
+       }
+   }
+   
+   cout << "Vnesovte " << counter << " parovi od broevi chij zbir e " << z << endl;
+   cout << "Procentot na parovi so zbir " << z << " e " << (float)counter / counterPair * 100 << "%" << endl;
+    
+    return 0;
+}
