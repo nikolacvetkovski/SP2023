@@ -1,0 +1,39 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n, i = 0, points, maxPoints;
+    double average = 0.0;
+    cin >> n;
+    
+    while(i < n) {
+        average = 0.0;
+        cin >> points >> maxPoints;
+        average = (float) points / maxPoints * 100;
+        
+        cout << average << " ";
+        
+        if(average < 50) {
+            cout << "FAIL" << endl;
+        }
+        else if(average < 60) {
+            cout << "6" << endl;
+        }
+        else if(average < 70) {
+            cout << "7" << endl;
+        }
+        else if(average < 80) {
+            cout << "8" << endl;
+        }
+        else if(average < 90) {
+            cout << "9" << endl;
+        }
+        else {
+            cout << "10" << endl;
+        }
+        
+        ++i;
+    }
+    
+    return 0;
+}
