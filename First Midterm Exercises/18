@@ -1,0 +1,35 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int a, b, counter = 0, lastDigit, firstDigit;
+    cin >> a >> b;
+    
+    for(int i = a; i <= b; i++) {
+        int temp = i, reversedNumber = 0, newNumber;
+        lastDigit = temp % 10;
+        
+        while(temp > 0) {
+            firstDigit = temp % 10;
+            temp /= 10;
+        }
+        
+        newNumber = firstDigit + lastDigit;
+        temp = i, temp /= 10;
+        
+        while(temp > 0) {
+            int digit = temp % 10;
+            reversedNumber = reversedNumber * 10 + digit;
+            temp /= 10;
+        }
+        reversedNumber /= 10;
+        
+        if(reversedNumber / newNumber != 0 && reversedNumber % newNumber == 0) {
+            ++counter;
+            cout << i << " -> (" << reversedNumber << " == (" << lastDigit << " + " << firstDigit << ") * " << reversedNumber / newNumber << ")" << endl;
+        }
+    }
+    cout << counter << endl;
+    
+    return 0;
+}
