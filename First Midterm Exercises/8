@@ -1,0 +1,38 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+   int n, x;
+   bool isTrue = false;
+   cin >> n >> x;
+   
+   for(int i = n - 1; i > 0; i--) {
+       int temp_n = i, temp_x = x;
+       while(temp_n > 0) {
+           int digit_n = temp_n % 10;
+           while(temp_x > 0) {
+               int digit_x = temp_x % 10;
+               if(digit_n == digit_x) {
+                   isTrue = false;
+                   break;
+               }
+               isTrue = true;
+               temp_x /= 10;
+           }
+           if(!isTrue) {
+               break;
+           }
+           temp_x = x;
+           temp_n /= 10;
+       }
+       if(isTrue) {
+           cout << i << endl;
+           break;
+       }
+   }
+   if(!isTrue) {
+       cout << "0" << endl;
+   }
+   
+    return 0;
+}
