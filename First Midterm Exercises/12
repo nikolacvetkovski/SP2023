@@ -40,3 +40,37 @@ int main() {
 
     return 0;
 }
+
+
+/* 
+-----> Another solution using string! <-----
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+    int number, counterArray[5] = {0};
+    string numberToString;
+    
+    while(cin >> number) {    // 97654
+        numberToString = to_string(number);
+        int maxDigit = 0, maxPos;
+        for(int i = 0; i < numberToString.size(); i++) {
+            int digit = numberToString[i] - '0';
+            if(digit >= maxDigit) {
+                maxDigit = digit;
+                maxPos = i;
+            }
+        }
+        
+        counterArray[numberToString.size() - 1 - maxPos]++;
+    }
+    
+    for(int i = 0; i < 5; i++) {
+        cout << i << ": " << counterArray[i] << endl;
+    }
+
+    return 0;
+} 
+*/
