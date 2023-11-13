@@ -1,0 +1,31 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n, i = 0, num1, num2, lastDigit;
+    cin >> n;
+    
+    while(i < n) {
+        cin >> num1 >> num2;
+        int temp = num1, reversedNumber, multiplier = 1;
+        lastDigit = temp % 10;
+        
+        while(temp > 0) {
+            multiplier *= 10;
+            temp /= 10;
+        }
+        
+        multiplier /= 10;
+        temp = num1, temp /= 10;
+        reversedNumber = lastDigit * multiplier + temp;
+        if(reversedNumber > num2) {
+            cout << "YES" << endl;
+        }
+        else {
+            cout << "NO" << endl;
+        }
+        ++i;
+    }
+    
+    return 0;
+}
