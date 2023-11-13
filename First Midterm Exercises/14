@@ -1,0 +1,42 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int a, b, counter = 0, firstDigit, lastDigit;
+    cin >> a >> b;
+    
+    for(int i = a; i <= b; i++) {
+        int newNumber = 0, temp = i, product = 1, digit;
+        lastDigit = temp % 10;
+        while(temp > 0) {
+            firstDigit = temp % 10;
+            temp /= 10;
+        }
+        newNumber = firstDigit * 10 + lastDigit;
+        temp = i;
+        temp /= 10;
+        
+        while(temp > 0) {
+            digit = temp % 10;
+            if(digit == 0) {
+                break;
+            }
+            product = product * digit;
+            temp /= 10;
+        }
+        if(digit > 0) {
+            product /= digit;
+        }
+        else {
+            product = 0;
+        }
+        
+        if(product != 0 && product % newNumber == 0) {
+            ++counter;
+            cout << i << " -> (" << product << " == " << newNumber << " * " << product / newNumber << ")" << endl;
+        }
+    }
+    
+    cout << counter << endl;
+    return 0;
+}
