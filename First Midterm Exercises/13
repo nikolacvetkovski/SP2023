@@ -1,0 +1,25 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int number, prev, maxDigit = 0, sum = 0;
+    
+    while(cin >> number) {
+        prev = maxDigit;
+        maxDigit = 0, sum = 0;
+        
+        int temp = number;
+        while(temp > 0) {
+            int digit = temp % 10;
+            sum += digit;
+            if(digit > maxDigit) {
+                maxDigit = digit;
+            }
+            temp /= 10;
+        }
+        
+        cout << number << ": " << sum + prev << endl;
+    }
+
+    return 0;
+}
