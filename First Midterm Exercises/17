@@ -1,0 +1,40 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int todaysDate, n, i = 0, birthdayDate, year, month, day;
+    cin >> todaysDate >> n;
+    
+    while(i < n) {
+        cin >> birthdayDate;
+        year = (todaysDate % 10000) - (birthdayDate % 10000);
+        month = (todaysDate / 10000 % 100) - (birthdayDate / 10000 % 100);
+        day = (todaysDate / 1000000 % 100) - (birthdayDate / 1000000 % 100);
+        
+        if(year < 18) {
+            cout << "NO" << endl;
+        }
+        else if(year > 18) {
+            cout << "YES" << endl;
+        }
+        else {
+            if(month > 0) {
+                cout << "YES" << endl;
+            }
+            else if(month < 0) {
+                cout << "NO" << endl;
+            }
+            else {
+                if(day >= 0) {
+                    cout << "YES" << endl;
+                }
+                else {
+                    cout << "NO" << endl;
+                }
+            }
+        }
+        
+        ++i;
+    }
+    return 0;
+}
