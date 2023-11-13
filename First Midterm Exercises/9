@@ -1,0 +1,38 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    char hexa;
+    int sum = 0;
+    
+    while(cin >> hexa) {
+        if(hexa == '.') {
+            break;
+        }
+        
+        if(hexa >= 'A' && hexa <= 'F') {
+            sum += hexa - 'A' + 10;
+        }
+        else if(hexa >= 'a' && hexa <= 'f') {
+            sum += hexa - 'a' + 10;
+        }
+        else if(hexa >= '0' && hexa <= '9') {
+            sum += hexa - '0';
+        }
+    }
+    
+    int digit1, digit2;
+    digit1 = sum % 10;
+    digit2 = sum / 10 % 10;
+    if(sum % 16 == 0 && digit1 == 6 && digit2 == 1) {
+        cout << "Poln pogodok" << endl;
+    }
+    else if(sum % 16 == 0) {
+        cout << "Pogodok" << endl;
+    }
+    else {
+        cout << sum << endl;
+    }
+
+    return 0;
+}
