@@ -6,6 +6,7 @@ int main() {
     cin >> a >> b;
     
     for(int i = a; i <= b; i++) {
+        bool isZero = false;
         int newNumber = 0, temp = i, product = 1, digit;
         lastDigit = temp % 10;
         while(temp > 0) {
@@ -19,19 +20,18 @@ int main() {
         while(temp > 0) {
             digit = temp % 10;
             if(digit == 0) {
+                isZero = true;
                 break;
             }
             product = product * digit;
             temp /= 10;
         }
-        if(digit > 0) {
+        
+        if(!isZero) {
             product /= digit;
         }
-        else {
-            product = 0;
-        }
         
-        if(product != 0 && product % newNumber == 0) {
+        if(!isZero && product % newNumber == 0) {
             ++counter;
             cout << i << " -> (" << product << " == " << newNumber << " * " << product / newNumber << ")" << endl;
         }
