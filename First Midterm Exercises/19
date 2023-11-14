@@ -1,0 +1,133 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int main() {
+    int a, b, c;
+    while(cin >> a >> b >> c) {
+        int diff1, diff2, diff3, minDiff = 0;
+        diff1 = abs(a - b); 
+        diff2 = abs(a - c);
+        diff3 = abs(b - c);
+        
+        if(diff1 <= diff2 && diff1 <= diff3) {
+            minDiff = diff1;
+        }
+        else if(diff2 <= diff1 && diff2 <= diff3) {
+            minDiff = diff2;
+        }
+        else if(diff3 <= diff1 && diff3 <= diff2) {
+            minDiff = diff3;
+        }
+        
+        
+        if(minDiff == diff1 && minDiff == diff2) {
+            if(a > b && a > c) {
+                if(b > c) {
+                    cout << c << " " << b << " " << a << endl;
+                }
+                else {
+                    cout << b << " " << c <<  " " << a << endl;
+                }
+            }
+            else if(b > a && b > c) {
+                if(a > c) {
+                    cout << c << " " << a << " " << b << endl;
+                }
+                else {
+                    cout << a << " " << c << " " << b << endl;
+                }
+            }
+            else if(c > a && c > b) {
+                if(a > b) {
+                    cout << b << " " << a << " " << c << endl;
+                }
+                else { 
+                    cout << a << " " << b << " " << c << endl;
+                }
+            }
+        }
+        
+        else if(minDiff == diff1 && minDiff == diff3) {
+            if(a > b && a > c) {
+                if(b > c) {
+                    cout << c << " " << b << " " << a << endl;
+                }
+                else {
+                    cout << b << " " << c <<  " " << a << endl;
+                }
+            }
+            else if(b > a && b > c) {
+                if(a > c) {
+                    cout << c << " " << a << " " << b << endl;
+                }
+                else {
+                    cout << a << " " << c << " " << b << endl;
+                }
+            }
+            else if(c > a && c > b) {
+                if(a > b) {
+                    cout << b << " " << a << " " << c << endl;
+                }
+                else { 
+                    cout << a << " " << b << " " << c << endl;
+                }
+            }
+        }
+        
+        else if(minDiff == diff2 && minDiff == diff3) {
+            if(a > b && a > c) {
+                if(b > c) {
+                    cout << c << " " << b << " " << a << endl;
+                }
+                else {
+                    cout << b << " " << c <<  " " << a << endl;
+                }
+            }
+            else if(b > a && b > c) {
+                if(a > c) {
+                    cout << c << " " << a << " " << b << endl;
+                }
+                else {
+                    cout << a << " " << c << " " << b << endl;
+                }
+            }
+            else if(c > a && c > b) {
+                if(a > b) {
+                    cout << b << " " << a << " " << c << endl;
+                }
+                else { 
+                    cout << a << " " << b << " " << c << endl;
+                }
+            }
+        }
+        else {
+            if(minDiff == diff1) {
+                if(a > b) {
+                    cout << b << " " << a << endl;
+                }
+                else {
+                    cout << a << " " << b << endl;
+                }
+            }
+            else if(minDiff == diff2) {
+                if(a > c) {
+                    cout << c << " " << a << endl;
+                }
+                else {
+                    cout << a << " " << c << endl;
+                }
+            }
+            else if(minDiff == diff3) {
+                if(b > c) {
+                    cout << c << " " << b << endl;
+                }
+                else {
+                    cout << b << " " << c << endl;
+                }
+            }
+        }
+    }
+
+    return 0;
+}
