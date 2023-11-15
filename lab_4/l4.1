@@ -1,0 +1,28 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int a, b, minPal, maxPal = 0;
+    cin >> a >> b;
+    minPal = b;
+    for(int i=a; i<=b; i++) {
+        int number = i, reverseNumber = 0;
+        while(number > 0) {
+            int digit = number % 10;
+            reverseNumber = reverseNumber * 10 + digit;
+            number /= 10;
+        }
+        if(reverseNumber == i) {       // 10 25 --> 11 
+            if(reverseNumber < minPal) {
+                minPal = reverseNumber;
+            }
+            else if(reverseNumber > maxPal) {
+                maxPal = reverseNumber;  
+            }
+        }
+    }
+    cout << "Smallest Palindromic Number: " << minPal << endl;
+    cout << "Largest Palindromic Number: " << maxPal << endl;
+
+    return 0;
+}
