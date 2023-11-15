@@ -1,0 +1,37 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+    int a, b;
+    bool isTrue = false;
+    cin >> a >> b;   // 1234567  652321
+    
+    string stringA = to_string(a);
+    string stringB = to_string(b);
+    
+    for(int i = 1; i < stringA.size(); i+=2) {
+        for(int j = 0; j < stringB.size(); j+=2) {
+            if(stringA[i] - '0' == stringB[j] - '0') {
+                isTrue = true;
+                break;
+            }
+            else {
+                isTrue = false;
+            }
+        }
+        if(!isTrue) {
+            isTrue = false;
+            break;
+        }
+    }
+    
+    if(isTrue) {
+        cout << "DA" << endl;
+    }
+    else {
+        cout << "NE" << endl;
+    }
+
+    return 0;
+}
