@@ -8,12 +8,7 @@ int main() {
     
     for(int i=a+1; i<=b; i++) {
         ++counter;
-        if((i % 2 == 0) && (i % 7 == 0)) {
-            isTrue = true;
-            ++printedNumbers;
-            cout << i << endl;
-        }
-        else if((i % 2 != 0) && (i % 3 != 0)) {
+        if((i % 2 == 0) && (i % 7 == 0) || (i % 2 != 0) && (i % 3 != 0)) {
             isTrue = true;
             ++printedNumbers;
             cout << i << endl;
