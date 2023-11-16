@@ -1,0 +1,27 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int x, numbers, temp_x, counter_x = 0;
+    cin >> x;
+    temp_x = x;
+
+    while (temp_x > 0) {
+        ++counter_x;
+        temp_x /= 10;
+    }
+
+    while(cin >> numbers) {
+        int temp_n = numbers, counter_n = 0;
+        while(temp_n > 0) {
+            ++counter_n;
+            temp_n /= 10;
+        }
+        
+        if(counter_n == counter_x) {
+            cout << numbers << endl;
+        }
+    }
+
+    return 0;
+}
