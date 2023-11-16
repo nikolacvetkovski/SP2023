@@ -1,0 +1,30 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n, m, grades, predictedGrades, sum = 0, maxSemestar, maxGrades, maxPredictedGrades;
+    float average = 0.0, maxAverage = 0.0;
+    cin >> n; 
+    
+    for(int i = 0; i < n; i++) {
+        sum = 0, average = 0.0;
+        cin >> m;
+        for(int j = 0; j < m; j++) {
+            cin >> grades;
+            sum += grades;
+        }
+        cin >> predictedGrades;
+        average = ((float)sum / m) * ((float)m / predictedGrades) + (1 - (float)m / predictedGrades) * 5;
+        if(average > maxAverage) {
+            maxAverage = average;
+            maxSemestar = i + 1;
+            maxGrades = m;
+            maxPredictedGrades = predictedGrades;
+        }
+    }
+    cout << "Semester: " << maxSemestar << endl;
+    cout << "Grade point average : " << maxAverage << ", percentage of subjects passed: " << (float) maxGrades / maxPredictedGrades * 100 << "%" << endl;
+
+    
+    return 0;
+}
