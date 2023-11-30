@@ -35,7 +35,7 @@ bool isPrimeNumber(int number) {
 
 int main() {
    int counter = 0;
-   for(int i = 10000; i > 1; i--) {
+   for(int i = 9999; i > 1; i--) {
        if(isPrimeNumber(i) && isPrimeNumber(sumOfDigits(i))) {
            ++counter;
            cout << i << endl;
