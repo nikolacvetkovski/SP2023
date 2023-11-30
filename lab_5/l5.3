@@ -1,0 +1,29 @@
+#include <iostream>
+using namespace std;
+
+int countOccurence(int number, int digit) {
+    int count = 0;
+    while(number > 0) {
+        if(number % 10 == digit) {
+            ++count;
+        }
+        number /= 10;
+    }
+    return count;
+}
+
+int main() {
+   int m, n, p, counter = 0;
+   cin >> m >> n >> p;
+   
+   for(int i = m + 1; i > 0; i++) {
+       if(countOccurence(i, n) == p) {
+           ++counter;
+           cout << i << endl;
+       }
+       if(counter == 10) {
+           break;
+       }
+   }
+   return 0;
+}
