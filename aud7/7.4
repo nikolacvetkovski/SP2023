@@ -1,0 +1,47 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+  int array[100], n;
+  bool ascending, descending, neither;
+  cin >> n;
+  
+  for(int i = 0; i < n; i++) {
+      cin >> array[i];
+  }
+  
+  for(int i = 0; i < n - 1; i++) {
+      if(array[i] < array[i+1]) {
+          ascending = true;
+          neither = false;
+      }
+      else {
+          ascending = false;
+          neither = true;
+          break;
+      }
+  }
+  
+  for(int i = 0; i < n - 1; i++) {
+      if(array[i] > array[i+1]) {
+          descending = true;
+          neither = false;
+      }
+      else {
+          descending = false;
+          neither = true;
+          break;
+      }
+  }
+  
+  if(descending) {
+      cout << "Descending array!" << endl;
+  }
+  else if(ascending) {
+      cout << "Ascending array!" << endl;
+  }
+  else if(neither) {
+      cout << "Neither Descending nor Ascending array!" << endl;
+  }
+  return 0;
+}
