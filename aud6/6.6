@@ -1,0 +1,33 @@
+#include <iostream>
+using namespace std;
+
+int factorielSum(int number) {
+    int sum = 0;
+    while(number > 0) {
+        sum += number;
+        --number;
+    }
+    return sum;
+}
+
+int factorielProduct(int number) {
+    int product = 1;
+    while(number > 0) {
+        product *= number;
+        --number;
+    }
+    return product;
+}
+
+int main() {
+  int k, sum = 0;
+  cin >> k;
+  
+  for(int i = 1; i < k; i++) {
+      cout << factorielSum(i) << "! + ";
+      sum += factorielProduct(factorielSum(i));
+  }
+  cout << factorielSum(k) << "! ";
+  cout << "= " << sum + factorielProduct(factorielSum(k)) << endl;
+  return 0;
+}
