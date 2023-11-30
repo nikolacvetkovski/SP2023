@@ -1,0 +1,44 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+bool isPrimeNumber(int number) {
+    if(number < 2) {
+        return false;
+    }
+    else if(number == 2) {
+        return true;
+    }
+    bool isTrue = false;
+    for(int j = number - 1; j > 1; j--) {
+        if(number % j != 0) {
+            isTrue = true;
+        }
+        else {
+            isTrue = false;
+            break;
+        }
+    }
+    if(!isTrue) {
+        return false;
+    }
+    else {
+        return true;
+    }
+}
+
+int main() {
+  int counterPairs = 0;
+  for(int i = 2; i < 1000; i++) {
+      if(isPrimeNumber(i)) {
+          for(int j = i + 1; j < 1000; j++) {
+              if(isPrimeNumber(j) && abs(i - j) == 2) {
+                  ++counterPairs;
+                  cout << "NumberOne: " << i << " " << "NumberTwo: " << j << endl;
+              }
+          }
+      }
+  }
+  cout << "Counted Pairs: " << counterPairs << endl;
+  return 0;
+}
