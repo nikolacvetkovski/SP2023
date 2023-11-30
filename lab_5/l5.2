@@ -1,0 +1,38 @@
+#include <iostream>
+using namespace std;
+
+int obratenBroj (int broj) {
+    int ob = 0;
+    while(broj > 0) {
+        int cifra = broj % 10;
+        ob = ob * 10 + cifra;
+        broj /= 10;
+    }
+    return ob;
+}
+
+int sumaNaCifri (int broj) {
+    int suma = 0;
+    while(broj > 0) {
+        int cifra = broj % 10;
+        suma += cifra;
+        broj /= 10;
+    }
+    return suma;
+}
+
+void PecatiVoInterval(int a, int b) {
+    for(int i = a; i <= b; i++) {
+        if(i % obratenBroj(sumaNaCifri(i)) == 0) {
+            cout << i << endl;
+        }
+    }
+}
+
+int main() {
+   int a, b;
+   cin >> a >> b;
+   
+   PecatiVoInterval(a, b);
+   return 0;
+}
