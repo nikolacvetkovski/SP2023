@@ -1,0 +1,22 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+  int vector1[100], vector2[100], n, sum = 0;
+  cin >> n;
+  
+  for(int i = 0; i < n; i++) {
+      cin >> vector1[i];
+  }
+  
+  for(int i = 0; i < n; i++) {
+      cin >> vector2[i];
+  }
+  
+  for(int i = 0; i < n; i++) {
+      sum += vector1[i] * vector2[i];
+  }
+  
+  cout << "The scalar product is: " << sum << endl;
+  return 0;
+}
