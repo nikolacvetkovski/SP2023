@@ -1,0 +1,18 @@
+#include <iostream>
+using namespace std;
+
+int sumOfDigits(int number) {
+    return (number % 100) + (number / 100);
+}
+
+int main() {
+   int counter = 0;
+   for(int i = 1000; i < 10000; i++) {
+       if(i % sumOfDigits(i) == 0) {
+           ++counter;
+           cout << i << endl;
+       }
+   }
+   cout << counter << endl;
+   return 0;
+}
