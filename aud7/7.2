@@ -1,0 +1,27 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+  int array[100], n, counterOdd = 0, counterEven = 0, sumOdd = 0, sumEven = 0;
+  cin >> n;
+  
+  for(int i = 0; i < n; i++) {
+      cin >> array[i];
+  }
+  
+  for(int i = 0; i < n; i++) {
+      if(array[i] % 2 == 0) {
+          sumEven += array[i];
+          ++counterEven;
+      }
+      else {
+          sumOdd += array[i];
+          ++counterOdd;
+      }
+  }
+  
+  cout << "Sum of even elements: " << sumEven << endl;
+  cout << "Sum of odd elemenets: " << sumOdd << endl;
+  cout << "Relation: " << (float)counterEven / counterOdd;
+  return 0;
+}
