@@ -1,0 +1,28 @@
+#include <iostream>
+using namespace std;
+
+double calculateDiameter(double r) {
+    return 2 * r;
+}
+
+double calculatePerimeter(double r) {
+    return 2 * 3.14 * r;
+}
+
+double calculateArea(double r) {
+    return 3.14 * r * r;
+}
+
+int main() {
+    double radius, diameter, perimeter, area;
+    cin >> radius;
+    
+    diameter = calculateDiameter(radius);
+    perimeter = calculatePerimeter(radius);
+    area = calculateArea(radius);
+    
+    cout << "Diameter: " << diameter << endl;
+    cout << "Perimeter: " << perimeter << endl;
+    cout << "Area: " << area << endl;
+    return 0;
+}
