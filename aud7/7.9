@@ -1,0 +1,42 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int array[100][100], n, m, maxElement = 0, minElement = 1000000000;
+    cin >> n >> m;
+    
+    for(int i=0; i<n; i++) {
+        for(int j=0; j<m; j++) {
+            cin >> array[i][j];
+        }
+    }
+    
+    for(int i=0; i<n; i++) {
+        for(int j=0; j<m; j++) {
+            if(array[i][j] < minElement) {
+                minElement = array[i][j];
+            }
+            else if(array[i][j] > maxElement) {
+                maxElement = array[i][j];
+            }
+        }
+    }
+    
+    for(int i=0; i<n; i++) {
+        for(int j=0; j<m; j++) {
+            if(i == j) {
+                array[i][j] = maxElement - minElement;
+            }
+        }
+    }
+    
+    for(int i=0; i<n; i++) {
+        for(int j=0; j<m; j++) {
+            cout << array[i][j] << " ";
+        }
+        cout << endl;
+    }
+
+    return 0;
+}
