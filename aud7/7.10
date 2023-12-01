@@ -4,7 +4,7 @@ using namespace std;
 int main()
 {
     int array[100][100], n, m;
-    bool isSymmetric = false;
+    bool isSymmetric = true;
     cin >> n >> m;
     
     for(int i=0; i<n; i++) {
@@ -15,16 +15,12 @@ int main()
     
     for(int i=0; i<n; i++) {
         for(int j=0; j<m; j++) {
-            if(array[i][j] == array[j][i]) {
-                isSymmetric = true;
-            }
-            else {
+            if(array[i][j] != array[j][i]) {
                 isSymmetric = false;
                 break;
             }
         }
         if(!isSymmetric) {
-            isSymmetric = false;
             break;
         }
     }
@@ -33,7 +29,7 @@ int main()
         cout << "The matrix is symmetric to it's main diagonal!" << endl;
     }
     else {
-        cout << "The matrix is not symmetrc!" << endl;
+        cout << "The matrix is asymmetric!" << endl;
     }
     
     return 0;
