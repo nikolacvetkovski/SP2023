@@ -1,0 +1,40 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int array[100][100], n, m;
+    bool isSymmetric = false;
+    cin >> n >> m;
+    
+    for(int i=0; i<n; i++) {
+        for(int j=0; j<m; j++) {
+            cin >> array[i][j];
+        }
+    }
+    
+    for(int i=0; i<n; i++) {
+        for(int j=0; j<m; j++) {
+            if(array[i][j] == array[j][i]) {
+                isSymmetric = true;
+            }
+            else {
+                isSymmetric = false;
+                break;
+            }
+        }
+        if(!isSymmetric) {
+            isSymmetric = false;
+            break;
+        }
+    }
+    
+    if(isSymmetric) {
+        cout << "The matrix is symmetric to it's main diagonal!" << endl;
+    }
+    else {
+        cout << "The matrix is not symmetrc!" << endl;
+    }
+    
+    return 0;
+    }
