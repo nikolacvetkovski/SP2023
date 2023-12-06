@@ -1,0 +1,32 @@
+#include <iostream>
+using namespace std;
+
+void transformArray(int array[], int n) {
+    if(n % 2 == 1) {
+        array[n / 2] *= 2;
+    }
+    
+    for(int i = 0, j = n - 1; i < j; i++, j--) {
+        int sum = array[i] + array[j];
+        array[i] = sum;
+        array[j] = sum;
+    }
+}
+
+int main()
+{
+    int array[10], n;
+    cin >> n;
+    
+    for(int i = 0; i < n; i++) {
+        cin >> array[i];
+    }
+    
+    transformArray(array, n);
+    
+    for(int i = 0; i < n; i++) {
+        cout << array[i] << " ";
+    }
+    
+    return 0;
+}
