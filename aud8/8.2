@@ -1,0 +1,55 @@
+#include <iostream>
+using namespace std;
+
+int linearSearch(int array[], int target) {
+    for(int i = 0; i < 1000; i++) {
+        if(array[i] == target) {
+            return i;
+        }
+    }
+    return -1;
+}
+
+int binarySearch(int array[], int low, int high, int target) {
+    while(low <= high) {
+        int mid = low + (high - low) / 2;
+        
+        if(array[mid] == target) {
+            return mid;
+        }
+        
+        if(array[mid] < target) {
+            low = mid + 1;
+        }
+        
+        else {
+            high = mid - 1;
+        }
+    }
+    return -1;
+}
+
+int main()
+{
+    int array[1000], target;
+    
+    for(int i = 0; i < 1000; i++) {
+        array[i] = i + 1;
+    }
+    
+    for(int i = 0; i < 1000; i++) {
+        cout << array[i] << " ";
+    }
+    
+    cout << endl;
+    
+    cin >> target;
+    
+    cout << linearSearch(array, target);
+    
+    cout << endl;
+    
+    cout << binarySearch(array, 0, 1000, target);
+    
+    return 0;
+}
