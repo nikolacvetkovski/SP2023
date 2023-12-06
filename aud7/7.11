@@ -1,0 +1,39 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int array[100][100], n, m;
+    int mines[100][100];
+    cin >> n >> m;
+    
+    for(int i = 0; i < n; i++) {
+        for(int j = 0; j < m; j++) {
+            cin >> array[i][j];
+            mines[i][j] = 0;
+        }
+    }
+    
+    int counter = 0;
+    
+    for(int i = 1; i < n - 1; i++) {
+        for(int j = 1; j < m - 1; j++) {
+            if((array[i][j] == 1 &&
+                array[i - 1][j] == 1 &&
+                array[i][j - 1] == 1 &&
+                array[i + 1][j] == 1 &&
+                array[i][j + 1] == 1) 
+                && (mines[i][j] == 0 &&
+                mines[i - 1][j] == 0 &&
+                mines[i][j - 1] == 0 &&
+                mines[i + 1][j] == 0 &&
+                mines[i][j + 1] == 0)) {
+                    ++counter;
+                    mines[i][j] = mines[i - 1][j] = mines[i][j - 1] = mines[i + 1][j] = mines[i][j + 1] = 1;
+                }
+            }
+        }
+    
+    cout << counter;
+    return 0;
+}
