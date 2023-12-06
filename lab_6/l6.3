@@ -1,0 +1,28 @@
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+int main()
+{
+    int array[100], n, m, counter;
+    cin >> n;
+    
+    for(int i = 0; i < n; i++) {
+        counter = 0;
+        
+        cin >> m;
+        for(int j = 0; j < m; j++) {
+            cin >> array[j];
+        }
+        
+        for(int j = 0; j < m; j++) {
+            if(array[j] == array[m - j - 1]) {
+                ++counter;
+            }
+        }
+        
+        cout << fixed << setprecision(2) << (float)counter / m * 100  << "%" << endl;
+    }
+
+    return 0;
+}
