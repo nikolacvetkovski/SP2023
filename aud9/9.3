@@ -1,0 +1,36 @@
+#include <iostream>
+using namespace std;
+
+int isPrime(int number, int divisor) {   // 577 --> ako od 2 do 577 ne najdeme broj sto e deliv so 577 
+    if(number == divisor) {
+        return 1;
+    }
+    else {
+        if(number % divisor == 0) {
+            return 0;
+        }
+        else {
+            return isPrime(number, divisor + 1);
+        }
+    }
+}
+
+int nextLargerPrime(int number) {  // 573 ---> 574, 575, 576, 577 
+    if(isPrime(number, 2)) {
+        return number;
+    }
+    else {
+        return nextLargerPrime(number + 1);
+    }
+}
+
+int main() 
+{
+    int n;
+    cin >> n;
+    
+    int nextNumber = nextLargerPrime(n + 1);
+    cout << nextNumber << " - " << n << " = " << nextNumber - n;
+    
+    return 0;
+}
