@@ -1,0 +1,31 @@
+#include <iostream>
+using namespace std;
+
+int countOccurences(int number) {   // 88188218 --->  7
+    if(number == 0) {
+        return 0;
+    }
+    else {
+        int lastDigit = number % 10;
+        int prevLastDigit = number / 10 % 10;
+        
+        if(lastDigit == 8 && prevLastDigit == 8) {
+            return 2 + countOccurences(number / 10);
+        }
+        else if(lastDigit == 8) {
+            return 1 + countOccurences(number / 10);
+        }
+        else {
+            return countOccurences(number / 10);
+        }
+    }
+}
+
+int main() 
+{
+    int number;
+    cin >> number;
+    
+    cout << countOccurences(number);
+    return 0;
+}
