@@ -1,0 +1,22 @@
+#include <iostream>
+using namespace std;
+
+void count_up(int number) {
+    if(number == 0) {
+        cout << "0" << " ";
+        return;
+    }
+    
+    count_up(number - 1);
+    cout << number << " ";
+}
+
+int main() 
+{
+    int n;
+    cin >> n;
+    
+    count_up(n);
+
+    return 0;
+}
