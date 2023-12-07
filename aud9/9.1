@@ -1,0 +1,35 @@
+#include <iostream>
+using namespace std;
+
+int sumOfDigits(int number) {
+    if(number == 0)
+    {
+        return 0;
+    }
+    
+    return number + sumOfDigits(number - 1);
+}
+
+int factorial(int number) {
+    if(number == 1) {
+        return 1;
+    }
+    
+    return number * factorial(number - 1);
+}
+
+int main()
+{
+    int number, sum = 0;
+    cin >> number;
+    
+    for(int i = 1; i < number; i++) {
+        sum += factorial(sumOfDigits(i));
+        cout << factorial(sumOfDigits(i)) << "!" << " + ";
+    }
+    
+    sum += factorial(sumOfDigits(number));
+    cout << factorial(sumOfDigits(number)) << "!" << " = " << sum << endl;
+
+    return 0;
+}
