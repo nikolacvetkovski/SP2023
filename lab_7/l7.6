@@ -1,0 +1,51 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int matr[100][100], n, k;
+    cin >> n;
+    
+    for(int i = 0; i < n; i++) {
+        for(int j = 0; j < n; j++) {
+            cin >> matr[i][j];
+        }
+    }
+    
+    cin >> k;
+    
+    int column[n], g = 0, mainDiagonal[n], r = 0;
+    
+    for(int i = 0; i < n; i++) {
+        for(int j = 0; j < n; j++) {
+            if(j == k) {
+                column[g++] = matr[i][j];
+            }
+            if(i == j) {
+                mainDiagonal[r++] = matr[i][j];
+            }
+        }
+    }
+    
+    for(int i = 0; i < n; i++) {
+        matr[k][i] = mainDiagonal[i];
+    }
+    
+    for(int i = 0; i < n; i++) {
+        matr[i][k] = mainDiagonal[i];
+    }
+    
+    for(int i = 0; i < n; i++) {
+        matr[i][i] = column[i];
+    }
+    
+    
+    for(int i = 0; i < n; i++) {
+        for(int j = 0; j < n; j++) {
+            cout << matr[i][j] << " ";
+        }
+        cout << endl;
+    }
+    
+    return 0;
+}
