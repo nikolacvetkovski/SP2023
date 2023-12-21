@@ -1,0 +1,31 @@
+#include <iostream>
+using namespace std;
+
+int minElement(int arr[], int n, int i, int min) {
+    if(i == n - 1) {
+        if(arr[i] < min) {
+            return arr[i];
+        }
+        else {
+            return min;
+        }
+    }
+    
+    if(arr[i] < min) {
+        min = arr[i];
+    }
+    return minElement(arr, n, i + 1, min);
+}
+
+int main()
+{
+    int arr[100], n;
+    cin >> n;
+    
+    for(int i = 0; i < n; i++) {
+        cin >> arr[i];
+    }
+    
+    cout << minElement(arr, n, 0, 999999999);
+    return 0;
+}
