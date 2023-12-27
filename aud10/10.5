@@ -1,0 +1,20 @@
+#include <iostream>
+#include <cstring>
+using namespace std;
+
+int main()
+{
+    char text[100], newText[100];
+    int startPos, length;
+    cin.getline(text, 100);
+    cin >> startPos >> length;
+    
+    if(strlen(text) >= startPos && strlen(text) >= length) {
+        strncpy(newText, text + startPos, length);
+        newText[length] = '\0';
+    }
+    
+    cout << newText << endl;
+    
+    return 0;
+}
