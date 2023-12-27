@@ -1,0 +1,35 @@
+#include <iostream>
+#include <cstring>
+using namespace std;
+
+bool isSubArray(char *a1, char *a2) {
+    int l1 = strlen(a1);
+    int l2 = strlen(a2);
+    if(l1 > l2) {
+        return false;
+    }
+    
+    for(int i = 0; i < l2; i++) {
+        if(strncmp(a1, a2 + i, l1) == 0) {
+            return true;
+        }
+    }
+    return false;
+}
+
+int main()
+{
+    char array1[100], array2[100];
+    cin.getline(array1, 100);
+    cin.getline(array2, 100);
+    
+    bool result = isSubArray(array1, array2);
+    if(result) {
+        cout << "The sentence " << "'" << array1 << "'" << " is present in the string " << "'" << array2 << "'" << endl;
+    }
+    else {
+        cout << "Not present!" << endl;
+    }
+    
+    return 0;
+}
