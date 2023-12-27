@@ -1,0 +1,29 @@
+#include <iostream>
+using namespace std;
+
+int countIterative(char *array) {
+    int counter = 0;
+    for(int i = 0; *(array + i) != '\0'; i++) {
+        ++counter;
+    }
+    return counter;
+}
+
+int countRecursively(char *array, int index) {
+    if(array[index] == '\0') {
+        return 0;
+    }
+    
+    return 1 + countRecursively(array, index + 1);
+}
+
+int main()
+{
+    char text[100];
+    cin.getline(text, 100);
+    
+    cout << "Iterative: " << countIterative(text) << endl;
+    cout << "Recursively: " << countRecursively(text, 0) << endl;
+    
+    return 0;
+}
