@@ -1,0 +1,51 @@
+#include <iostream>
+#include <cstring>
+#include <cctype>
+using namespace std;
+
+void transform(char *text) {
+    bool isSpace = true;
+    int countSpaces = 0, j = 0;
+    for(int i = 0; text[i] != '\0'; i++) {
+        if(isspace(text[i]) && isSpace) {
+            ++countSpaces;
+        }
+        else {
+            isSpace = false;
+        }
+    }
+    
+    for(int i = countSpaces; text[i] != '\0'; i++) {
+        text[j++] = text[i];
+    }
+    text[j] = '\0';
+    
+    isSpace = true, countSpaces = 0;
+    for(int i = j - 1; i >= 0; i--) {
+        if(isspace(text[i]) && isSpace) {
+            ++countSpaces;
+        }
+        else {
+            isSpace = false;
+        }
+    }
+    
+    text[j - countSpaces] = '\0';
+}
+
+int main()
+{
+    char text[100];
+    cin.getline(text, 100);
+    
+    int s = strlen(text);
+    cout << text << " " << s << endl;
+    
+    transform(text);
+    
+    s = strlen(text);
+    
+    cout << text << " " << s << endl;
+    
+    return 0;
+}
