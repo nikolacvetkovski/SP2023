@@ -1,0 +1,46 @@
+#include <iostream>
+using namespace std;
+
+void transformArray(int *array, int n) {
+    bool isTrue;
+    int helpArray[n], j = 0;
+    if(n % 2 != 0) {
+        isTrue = true;
+        *(array + n / 2) *= 3;
+    }
+    else {
+        isTrue = false;
+    }
+    
+    for(int i = 0; i < n; i++) {
+        if(isTrue) {
+            if(i == n / 2) {
+                helpArray[j++] = *(array + i);
+                continue;
+            }
+        }
+        helpArray[j++] = *(array + i) + *(array + n - i - 1);
+    }
+    
+    for(int i = 0; i < n; i++) {
+        *(array + i) = *(helpArray + i);
+    }
+}
+
+int main()
+{
+    int array[100], n;
+    cin >> n;
+    
+    for(int i = 0; i < n; i++) {
+        cin >> array[i];
+    }
+    
+    transformArray(array, n);
+    
+    for(int i = 0; i < n; i++) {
+        cout << array[i] << " ";
+    }
+    
+    return 0;
+}
