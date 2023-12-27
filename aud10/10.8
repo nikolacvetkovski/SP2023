@@ -1,0 +1,42 @@
+#include <iostream>
+#include <cstring>
+#include <cctype>
+using namespace std;
+
+bool isValid(char *txt) {
+    int countWord = 0, countSign = 0, countDigit = 0;
+    for(int i = 0; txt[i] != '\0'; i++) {
+        if(isalpha(txt[i])) {
+            ++countWord;
+        }
+        else if(isdigit(txt[i])) {
+            ++countDigit;
+        }
+        else if(ispunct(txt[i])) {
+            ++countSign;
+        }
+    }
+    
+    if(countWord >= 1 && countDigit >= 1 && countWord >= 1) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+int main()
+{
+    char text[100];
+    cin.getline(text, 100);
+    
+    bool result = isValid(text);
+    if(result) {
+        cout << text << " is a VALID password! Sign in!" << endl;
+    }
+    else {
+        cout << text << " is NOT a valid password!" << endl;
+    }
+    
+    return 0;
+}
