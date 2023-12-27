@@ -1,0 +1,37 @@
+#include <iostream>
+#include <cstring>
+#include <cctype>
+using namespace std;  //Zdravo kako si? --> a --> avo ka
+
+void transform(char *text, char letter) {
+    bool isLetter = false;
+    int posStart, posEnd, j = 0;
+    for(int i = 0; text[i] != '\0'; i++) {
+        if(tolower(text[i]) == tolower(letter) && !isLetter) {
+            posStart = i;
+            isLetter = true;
+        }
+        
+        if(tolower(text[i]) == tolower(letter) && isLetter) {
+            posEnd = i;
+        }
+    }
+    
+    for(int i = posStart; i <= posEnd; i++) {
+        text[j++] = text[i];
+    }
+    text[j] = '\0';
+}
+
+int main()
+{
+    char text[100], letter;
+    cin.getline(text, 100);
+    cin >> letter;
+    
+    transform(text, letter);
+    
+    cout << text << endl;
+    
+    return 0;
+}
