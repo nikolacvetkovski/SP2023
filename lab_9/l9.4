@@ -1,0 +1,27 @@
+#include <iostream>
+#include <cstring>
+#include <cctype>
+using namespace std;
+
+void transform(char *text) {
+    for(int i = 0; text[i] != '\0'; i++) {
+        if(islower(text[i])) {
+            text[i] = toupper(text[i]);
+        }
+        else {
+            text[i] = tolower(text[i]);
+        }
+    }
+}
+
+int main()
+{
+    char text[100];
+    cin.getline(text, 100);
+    
+    transform(text);
+    
+    cout << text << endl;
+
+    return 0;
+}
