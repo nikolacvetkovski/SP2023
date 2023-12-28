@@ -1,0 +1,45 @@
+#include <iostream>
+#include <cstring>
+#include <cctype>
+using namespace std;   // baby, i love you very much --> love --> 3 --> baby i you you very much
+
+int main()
+{
+    char text[100], word[50], wordToCheck[50], *array[50], saveWord[50];  //array[50][50]
+    int j = 0, pos = 0, n;
+    cin.getline(text, 100);
+    cin.getline(wordToCheck, 50);
+    cin >> n;
+    
+    for(int i = 0; text[i] != '\0'; i++) {
+        if(!isspace(text[i]) && !ispunct(text[i])) {
+            word[j++] = text[i];
+        }
+        else {
+            if(j > 0) {
+                word[j] = '\0';
+                array[pos] = new char[strlen(word) + 1];  //if we use *array[50]
+                strcpy(array[pos], word);
+                ++pos;
+                j = 0;
+            }
+        }
+    }
+    
+    strcpy(saveWord, array[n]);
+    int length = strlen(wordToCheck);
+    for(int i = 0; i < pos; i++) {
+        if(strncmp(wordToCheck, array[i], length) == 0) {
+            delete[] array[i]; // Free memory before reusing the pointer, if we use *array[50]
+            array[i] = new char[strlen(saveWord) + 1]; // //if we use *array[50]
+            strcpy(array[i], saveWord);
+        }
+    }
+    
+    for(int i = 0; i < pos; i++) {
+        cout << array[i] << " ";
+        delete[] array[i]; // Free memory allocated for each word, if we use *array[50]
+    }
+    
+    return 0;
+}
