@@ -31,7 +31,7 @@ int main()
     for(int i = 0; i < pos; i++) {
         if(strncmp(wordToCheck, array[i], length) == 0) {
             delete[] array[i]; // Free memory before reusing the pointer, if we use *array[50]
-            array[i] = new char[strlen(saveWord) + 1]; // //if we use *array[50]
+            array[i] = new char[strlen(saveWord) + 1]; //if we use *array[50]
             strcpy(array[i], saveWord);
         }
     }
