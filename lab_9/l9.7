@@ -1,0 +1,76 @@
+#include <iostream>
+#include <cstring>
+#include <cctype>
+using namespace std;   // dovod, angel e neda !relio, jajce na oko.  --->  2 palindromes!
+
+int countPalindromes(char **array, int n) {
+    int counter = 0;
+    bool isTrue;
+    for(int i = 0; i < n; i++) {
+        int sizeWord = strlen(array[i]);
+        for(int j = 0; j < sizeWord / 2; j++) {
+            if(array[i][j] == array[i][sizeWord - j - 1]) {
+                isTrue = true;
+            }
+            else {
+                isTrue = false;
+            }
+        }
+        if(isTrue) {
+            ++counter;
+        }
+    }
+    return counter;
+}
+
+void printPalindrome(char **array, int n) {
+    bool isTrue;
+    for(int i = 0; i < n; i++) {
+        int sizeWord = strlen(array[i]);
+        for(int j = 0; j < sizeWord / 2; j++) {
+            if(array[i][j] == array[i][sizeWord - j - 1]) {
+                isTrue = true;
+            }
+            else {
+                isTrue = false;
+            }
+        }
+        
+        if(isTrue) {
+            cout << array[i] << endl;
+        }
+    }
+}
+
+int main()
+{
+    char text[100], *array[100], word[50], j = 0, pos = 0;
+    cin.getline(text, 100);
+    
+    for(int i = 0; text[i] != '\0'; i++) {
+        if(!isspace(text[i]) && !ispunct(text[i])) {
+            word[j++] = text[i];
+        }
+        else {
+            if(j > 0) {
+                word[j] = '\0';
+                array[pos] = new char[strlen(word) + 1];
+                strcpy(array[pos], word);
+                ++pos;
+                j = 0;
+            }
+        }
+    }
+    
+    int result = countPalindromes(array, pos);
+    if(result > 0) {
+        cout << "The string '" << text << "' has "<< result << " Palindromes!" << endl;
+    }
+    else {
+        cout << "The string '" << text << "' does NOT have any Palindromes!" << endl;
+    }
+    
+    printPalindrome(array, pos);
+    
+    return 0;
+}
