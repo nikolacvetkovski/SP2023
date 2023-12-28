@@ -1,0 +1,39 @@
+#include <iostream>
+#include <cstring>
+#include <cctype>
+using namespace std;
+
+bool stringFunction(char *text, char c1, char c2) {
+    int counter1 = 0, counter2 = 0;
+    for(int i = 0; text[i] != '\0'; i++) {
+        if(tolower(text[i]) == tolower(c1)) {
+            ++counter1;
+        }
+        
+        if(tolower(text[i]) == tolower(c2)) {
+            ++counter2;
+        }
+    }
+    
+    if(counter1 != counter2) {
+        return false;
+    }
+    return true;
+}
+
+int main()
+{
+    char text[100], c1, c2;
+    cin.getline(text, 100);
+    cin >> c1 >> c2;
+    
+    bool result = stringFunction(text, c1, c2);
+    if(result) {
+        cout << "True" << endl;
+    }
+    else {
+        cout << "False" << endl;
+    }
+
+    return 0;
+}
