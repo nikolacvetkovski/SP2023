@@ -1,0 +1,36 @@
+#include <iostream>
+#include <cstring>
+#include <cctype>
+using namespace std;
+
+void transformString(char *word) {
+    int n = strlen(word);
+    for(int i = 0; i < n; i++) {
+        *(word + i) = tolower(*(word + i));
+    }
+}
+
+int main()
+{
+    char word[50];
+    int countPairs = 0;
+    
+    while(cin >> word) {
+        if(word[0] == '#') {  //medioio ---> io oi io
+            break;
+        }
+        
+       transformString(word);
+        
+        for(int i = 0; i < strlen(word) - 1; i++) {
+            if(((word[i] == 'a') || (word[i] == 'e') || (word[i] == 'i') || (word[i] == 'o') || (word[i] == 'u')) &&
+            ((word[i + 1] == 'a') || (word[i + 1] == 'e') || (word[i + 1] == 'i') || (word[i + 1] == 'o') || (word[i + 1] == 'u'))) {
+                cout << word[i] << word[i + 1] << endl;
+                ++countPairs;
+            }
+        }
+    }
+    
+    cout << countPairs << endl;
+    return 0;
+}
