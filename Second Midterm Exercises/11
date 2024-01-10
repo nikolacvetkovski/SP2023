@@ -1,0 +1,55 @@
+#include <iostream>
+#include <cstring>
+#include <cctype>
+#include <fstream>
+using namespace std;
+
+void wtf() {
+    ofstream f("input.txt");
+    char c;
+    while((c = cin.get()) != EOF) {
+        f.put(c);
+    }
+    f.close();
+}
+
+int main() {
+    wtf();
+    
+    ifstream f("input.txt");
+    
+    if(!f.is_open()) {
+        return 1;
+    }
+    
+    char row[100], rowDigits[100];
+    while(!f.eof()) {
+        f.getline(row, 100);
+        if(row[0] == '#') {
+            break;
+        }
+        
+        int n = strlen(row), countDigits = 0;
+        for(int i = 0; i < n; i++) {
+            if(isdigit(row[i])) {
+                rowDigits[countDigits++] = row[i];
+            }
+        }
+        rowDigits[countDigits] = '\0';
+        
+        for(int i = 0; i < countDigits; i++) {
+            for(int j = 0; j < countDigits - 1; j++) {
+                if(rowDigits[j] > rowDigits[j + 1]) {
+                    char temp = rowDigits[j];
+                    rowDigits[j] = rowDigits[j + 1];
+                    rowDigits[j + 1] = temp;
+                }
+            }
+        }
+        
+        cout << countDigits << ":" << rowDigits << endl;
+    }
+    
+    f.close();
+    return 0;
+}
