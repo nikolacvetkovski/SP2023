@@ -1,0 +1,68 @@
+#include <iostream>
+#include <cstring>
+#include <cctype>
+#include <fstream>
+
+using namespace std;
+
+// ne menuvaj ovde
+void wtf() {
+    ofstream f("dat.txt");
+    char c;
+    while((c = cin.get()) != EOF) {
+        f.put(c);
+    }
+    f.close();
+}
+
+int main() 
+{
+    wtf();
+	// vasiot kod ovde
+    ifstream f("dat.txt");
+    
+    if(!f.is_open()) {
+        return 1;
+    }
+    
+   char row[100], maxRow[100];
+   int countDigits, n, flag = 0, pos1, pos2, maxN = 0;
+    
+    while(!f.eof()) {
+        f.getline(row, 100);
+        if(row[0] == '0') {
+            break;
+        }
+        countDigits = 0, n = strlen(row);
+        
+        for(int i = 0; i < n; i++) {
+            if(isdigit(row[i])) {
+                ++countDigits;
+            }
+        }
+        
+        if(countDigits >= 2) {
+            if(n >= maxN) {
+                maxN = n;
+                strcpy(maxRow, row);
+            }
+        }
+    }
+    
+    for(int i = 0; i < maxN; i++) {
+        if(isdigit(maxRow[i]) && (flag == 0)) {
+            pos1 = i;
+            flag = 1;
+        }
+        else if(isdigit(maxRow[i]) && (flag == 1)) {
+            pos2 = i;
+        }
+    }
+    
+    for(int i = pos1; i <= pos2; i++) {
+        cout << maxRow[i];
+    }
+   
+   f.close();
+   return 0;
+}
