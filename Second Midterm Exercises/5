@@ -1,0 +1,53 @@
+#include <iostream>
+#include <cctype>
+#include <cstring>
+#include <fstream>
+using namespace std;
+
+// ne menuvaj ovde
+void wf() {
+    ofstream f("livce.txt");
+    char c;
+    while((c = cin.get()) != '#') {
+        f.put(c);
+    }
+    f.close();
+}
+
+int main()
+{
+    wf();
+    
+	// vasiot kod pocnuva od ovde
+    ifstream f("livce.txt");
+    
+    if(!f.is_open()) {
+        cerr << "Error opening file!" << endl;
+        return 1;
+    }
+    
+    int uplata, tip, maxTip;
+    float koef, dobivka = 1.0, maxKoef = 0.0;
+    char sifra[9], maxSifra[9];
+    
+    f >> uplata;
+    while(!f.eof()) {
+        f >> sifra;
+        if(sifra[0] == '#') {  // 100   ab12 1 1.2    c234 2 2.0
+            break;
+        }
+        f >> tip >> koef;
+        dobivka *= koef;
+        
+        if(koef > maxKoef) {
+            maxKoef = koef;
+            maxTip = tip;
+            strcpy(maxSifra, sifra);
+        }
+    }
+    cout << maxSifra << " " << maxTip << " " << maxKoef << endl;
+    cout << (uplata * dobivka) / koef << endl;
+    
+    f.close();
+    return 0;
+}
