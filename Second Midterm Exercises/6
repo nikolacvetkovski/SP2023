@@ -1,0 +1,57 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int mat[100][100], n, m, countOnes, finalCount = 0;
+    cin >> n >> m;
+    
+    for(int i = 0; i < n; i++) {
+        for(int j = 0; j < m; j++) {
+            cin >> mat[i][j];
+        }
+    }
+    
+    for(int i = 0; i < n; i++) {
+        for(int j = 0; j < m; j++) {
+            if(mat[i][j] == 1) {
+                ++countOnes;
+            } else {
+                if(countOnes >= 3) {
+                    countOnes = 0;
+                    ++finalCount;
+                    break;
+                } else {
+                    countOnes = 0;
+                }
+            }
+        }
+        if(countOnes >= 3) {
+            ++finalCount;
+        }
+        countOnes = 0;
+    }
+    
+    for(int j = 0; j < m; j++) {
+        for(int i = 0; i < n; i++) {
+            if(mat[i][j] == 1) {
+                ++countOnes;
+            } else {
+                if(countOnes >= 3) {
+                    countOnes = 0;
+                    ++finalCount;
+                    break;
+                } else {
+                    countOnes = 0;
+                }
+            }
+        }
+        if(countOnes >= 3) {
+            ++finalCount;
+        }
+        countOnes = 0;
+    }
+    
+    cout << finalCount << endl;
+    return 0;
+}
