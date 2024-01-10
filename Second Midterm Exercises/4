@@ -1,0 +1,38 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int main()
+{
+    int a[100][100], n, m, x1, x2, z1, z2, z3, z4;
+    z1 = z2 = z3 = z4 = 0;
+    cin >> n >> m;
+    
+    for(int i = 0; i < n; i++) {
+        for(int j = 0; j < m; j++) {
+            cin >> a[i][j];
+        }
+    }
+    
+    cin >> x1 >> x2;
+    
+    for(int i = 0; i < n; i++) {
+        for(int j = 0; j < m; j++) {
+            if(i < x1 && j >= x2) {
+                z1 += a[i][j];
+            }
+            if(i < x1 && j < x2) {
+                z2 += a[i][j];
+            }
+            if(i >= x1 && j < x2) {
+                z3 += a[i][j];
+            }
+            if(i >= x1 && j >= x2) {
+                z4 += a[i][j];
+            }
+        }
+    }
+    
+    cout << z1 << " " << z2 << " " << z3 << " " << z4 << endl;
+    return 0;
+}
