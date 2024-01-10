@@ -1,0 +1,28 @@
+#include <iostream>
+using namespace std;
+
+int recursiveFunction(int number, int max) {
+    if(number == 0) {
+        return max;
+    }
+    
+    if(number % 10 > max) {
+        max = number % 10;
+        return recursiveFunction(number / 10, max);
+    }
+    else {
+        return recursiveFunction(number / 10, max);
+    }
+}
+
+int main()
+{
+   int number;
+   
+   while(cin >> number) {
+       int result = recursiveFunction(number / 10, number % 10);
+       cout << result << endl;
+   }
+    
+   return 0;
+}
