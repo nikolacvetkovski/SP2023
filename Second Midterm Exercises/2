@@ -1,0 +1,67 @@
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+//ne menuvaj!
+void wtf() {
+    ofstream f("broevi.txt");
+    char c;
+    while((c = cin.get()) != EOF) {
+        f.put(c);
+    }
+    f.close();
+}
+
+int countMultiplier(int number) {
+    int countDigits = 0, multiplier = 1;
+    while(number > 0) {
+        ++countDigits;
+        number /= 10;
+    }
+    
+    while(countDigits > 1) {
+        multiplier *= 10;
+        --countDigits;
+    }
+    
+    return multiplier;
+}
+
+int main()
+{
+    wtf();
+    
+    // vashiot kod ovde
+    ifstream f("broevi.txt");
+    
+    if(!f.is_open()) {
+        cerr << "Error opening file!" << endl;
+        return 1;
+    }
+    
+    int number, n, i, multiplier, maxNumber, maxDigit;   // [6] 188500 250066 130499 445641 229614 448326
+    
+    while(!f.eof()) {
+        f >> n;
+        if(n == 0) {
+            break;
+        }
+        i = 0, maxNumber = 0, maxDigit = 0;
+        
+        while(i < n) {
+            f >> number;
+            
+            multiplier = countMultiplier(number);
+            if((number / multiplier) > maxDigit) {
+                maxDigit = number / multiplier;
+                maxNumber = number;
+            }
+            ++i;
+        }
+        
+        cout << maxNumber << endl;
+    }
+    
+    f.close();
+    return 0;
+}
