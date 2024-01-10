@@ -1,0 +1,30 @@
+#include <iostream>
+#include <cstring>
+#include <cctype>
+using namespace std;
+
+int main()
+{
+    char row1[100], row2[100], row3[200];
+    int n1, n2, k = 0;
+    cin.getline(row1, 100), cin.getline(row2, 100);
+    
+    n1 = strlen(row1), n2 = strlen(row2);
+    for(int i = 0; i < n1; i++) {
+        for(int j = 0; j < n2; j++) {
+            if((i == j) && row1[i] == row2[j]) {
+                row3[k++] = '=';
+            }
+            else if((i != j) && row1[i] == row2[j]) {
+                row3[k++] = '+';
+            }
+            else {
+                row3[k++] = '-';
+            }
+        }
+    }
+    row3[k] = '\0';
+    
+    cout << row3 << endl;
+    return 0;
+}
