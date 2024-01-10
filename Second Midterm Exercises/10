@@ -1,0 +1,40 @@
+#include <iostream>
+#include <cstring>
+#include <cctype>
+using namespace std;
+
+int main()
+{
+    char row[100], z1, z2;
+    int n, j, pos1, pos2;
+    bool alreadyHave;
+    cin >> z1 >> z2;
+    cin.ignore(1000, '\n');
+    
+    while(true) {
+        cin.getline(row, 100);
+        if(row[0] == '#') {
+            break;
+        }
+        
+        n = strlen(row), alreadyHave = false, j = 0;
+        for(int i = 0; i < n; i++) {   // nfjskdz0nvjkfdm0nlk9s9bvfkjmcdz,
+            if(row[i] == z1 && !alreadyHave) {
+                alreadyHave = true;
+                pos1 = i;
+            }
+            if(row[i] == z2 && alreadyHave) {
+                pos2 = i;
+            }
+        }
+        
+        for(int i = pos1 + 1; i < pos2; i++) {
+            row[j++] = row[i];
+        }
+        row[j] = '\0';
+        
+        cout << row << endl;
+    }
+    
+    return 0;
+}
