@@ -1,0 +1,31 @@
+#include <iostream>
+using namespace std;
+
+int sum_pos(int *arr, int ind, int n) {
+    if(ind > n) {
+        return 0;
+    }
+    
+    int sumElements = 0;
+    for(int i = ind; i < n; i++) {
+        sumElements += *(arr + i);
+    }
+    return sumElements;
+}
+
+int main()
+{
+    int arr[100], n, ind;
+    cin >> n;
+    
+    for(int i = 0; i < n; i++) {
+        cin >> arr[i];
+    }
+    
+    cin >> ind;
+    
+    int result = sum_pos(arr, ind, n);
+    cout << result << endl;
+    
+    return 0;
+}
