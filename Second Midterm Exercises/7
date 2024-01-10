@@ -1,0 +1,42 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int main()
+{
+    int mat[100][100], n, m, sum, maxNumber;
+    float as, maxDistance;
+    cin >> n >> m;
+    
+    int arr[m], k = 0;
+    for(int i = 0; i < n; i++) {
+        for(int j = 0; j < m; j++) {
+            cin >> mat[i][j];
+        }
+    }
+    
+    for(int i = 0; i < n; i++) {
+        sum = 0;
+        for(int j = 0; j < m; j++) {
+            sum += mat[i][j];
+        }
+        
+        as = (float)sum / m;
+        
+        maxNumber = mat[i][0], maxDistance = abs(mat[i][0] - as);
+        for(int j = 1; j < m; j++) {
+            if(abs(mat[i][j] - as) > maxDistance) {
+                maxDistance = abs(mat[i][j] - as);
+                maxNumber = mat[i][j];
+            }
+        }
+        
+        arr[k++] = maxNumber;
+    }
+    
+    for(int i = 0; i < n; i++) {
+        cout << arr[i] << " ";
+    }
+    
+    return 0;
+}
