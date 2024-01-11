@@ -1,26 +1,26 @@
 #include <iostream>
 using namespace std;
 
-int sumNumber(int n) {   // 12930 ---> 0 + 3 + 0 + 2 + 1 ---> 6
+int sumNumber(int n, int k) {   // 12930 ---> 0 + 3 + 0 + 2 + 1 ---> 6
     if(n == 0) {
         return 0;
     }
     
-    if(n % 10 >= 5) {
-        return 0 + sumNumber(n / 10);
+    if(n % 10 >= k) {
+        return 0 + sumNumber(n / 10, k);
     }
     
-    return n % 10 + sumNumber(n / 10);
+    return n % 10 + sumNumber(n / 10, k);
 }
 
 int main()
 {
-    int number, n, result, maxSum = 0, maxNumber;
-    cin >> n;
+    int number, n, k, result, maxSum = 0, maxNumber;
+    cin >> n >> k;
     
     for(int i = 0; i < n; i++) {
         cin >> number;
-        result = sumNumber(number);
+        result = sumNumber(number, k);
         
         if(result > maxSum) {
             maxSum = result;
