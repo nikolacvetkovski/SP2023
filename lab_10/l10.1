@@ -4,7 +4,7 @@ using namespace std;
 
 int main()
 {
-    int m[100][100], n, sum1 = 0, sum2 = 0;
+    int m[100][100], n, sum;
     bool isSquare = false;
     cin >> n;
     
@@ -15,31 +15,31 @@ int main()
     }
     
     for(int i = 0; i < n; i++) {
+        sum = 0;
         for(int j = 0; j < n; j++) {
             if(i == j) {
-                sum1 += m[i][j];
+                sum += m[i][j];
             }
             if(i + j == n - 1) {
-                sum2 += m[i][j];
+                sum += m[i][j];
             }
         }
-    }
-    
-    /*for(int i = 1; i < sum1; i++) {
-        if(i * i == sum1) {
+        if(sqrt(sum) == floor(sqrt(sum))) {
             isSquare = true;
         }
-    }
-    for(int i = 1; i < sum2; i++) {
-        if(i * i == sum2) {
-            isSquare = true;
+        else {
+            isSquare = false;
+            break;
         }
-    }*/
-
-    if((sqrt(sum1) == floor(sqrt(sum1))) || (sqrt(sum2) == floor(sqrt(sum2)))) {
-        isSquare = true;
     }
     
-    !isSquare ? cout << "NE" : cout << "DA";
+    for(int i = 0; i < n; i++) {
+        for(int j = 0; j < n; j++) {
+            cout << m[i][j] << " ";
+        }
+        cout << endl;
+    }
+    
+    !isSquare ? cout << "NO" : cout << "YES";
     return 0;
 }
