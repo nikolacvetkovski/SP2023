@@ -1,0 +1,49 @@
+#include <iostream>
+#include <cstring>
+#include <cctype>
+using namespace std;
+
+char transformString(char c, int x){
+    if(x == 0) {
+        return c;
+    }
+    
+    ++c;
+    if(isupper(c)) {
+        if(c > 'Z') {
+            c = (c - 'Z') + 'A' - 1; 
+        }
+    }
+    else if(islower(c)) {
+        if(c > 'z') {
+            c = (c -'z') + 'a' - 1;
+        }
+    }
+    else {
+        c = (c - 'z') + 'a' - 1;
+    }
+    
+    return transformString(c, x - 1);
+}
+
+int main()
+{
+    char row[80];
+    int n, x;
+    cin >> n >> x;
+    cin.ignore(80, '\n');
+    
+    for(int i = 0; i < n; i++) {
+        cin.getline(row, 80);
+        
+        for(int j = 0; j < strlen(row); j++) {
+            if(isalpha(row[j])) {
+                row[j] = transformString(row[j], x);
+            }
+        }
+        
+        cout << row << endl;
+    }
+    
+    return 0;
+}
