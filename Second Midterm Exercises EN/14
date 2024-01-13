@@ -1,0 +1,38 @@
+#include <iostream>
+#include <cstring>
+using namespace std;
+
+int main()
+{
+    int mat[100][100], n, countChanges = 0;
+    cin >> n;
+    
+    for(int i = 0; i < n; i++) {
+        for(int j = 0; j < n; j++) {
+            cin >> mat[i][j];
+        }
+    }
+    
+    for(int j = 0; j < n; j++) {
+        for(int i = 0; i < n; i++) {
+            if(i == j) {
+                if(mat[i][j] == 1){
+                    ++countChanges;
+                    mat[i][j] = 0;
+                }
+            }
+            else if(mat[i][j] != mat[j][i]) {
+                ++countChanges;
+                if(mat[i][j] == 1) {
+                    mat[i][j] = 0;
+                }
+                else {
+                    mat[i][j] = 1;
+                }
+            }
+        }
+    }
+    
+    cout << countChanges << endl;
+    return 0;
+}
