@@ -1,0 +1,42 @@
+#include <iostream>
+#include <cstring>
+#include <cctype>
+using namespace std;
+
+int main()
+{
+    int a, b, c, maxNumber, counter, maxCounter;
+    while(cin >> a >> b >> c) {
+        counter = 0;   // 1232432 3435 3 ---> 3435
+        
+        int temp = a;
+        while(temp > 0) {
+            if((temp / 10) % 10 == c) {
+                ++counter;
+            }
+            temp /= 100;
+        }
+        
+        maxCounter = counter;
+        counter = 0;
+        
+        temp = b;
+        while(temp > 0) {
+            if((temp / 10) % 10 == c) {
+                ++counter;
+            }
+            temp /= 100;
+        }
+        
+        if(counter > maxCounter) {
+            maxNumber = b;
+        }
+        else {
+            maxNumber = a;
+        }
+        
+        cout << maxNumber << endl;
+    }
+    
+    return 0;
+}
