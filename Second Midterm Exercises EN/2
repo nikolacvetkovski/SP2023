@@ -1,0 +1,33 @@
+#include <iostream>
+#include <cstring>
+#include <cctype>
+using namespace std;
+
+char transformString(char c){
+    c = tolower(c), c += 3;
+    if(c > 'z') {
+        c = (c - 'z') + 'a' - 1;
+    }
+    
+    return c;
+}
+
+int main()
+{
+    char row[100];
+    while(true) {
+        cin.getline(row, 100);
+        int getSize = strlen(row);
+        if(getSize < 1) {
+            break;
+        }
+        
+        for(int j = 0; j < getSize; j++) {
+            if(isalpha(row[j])) {
+                row[j] = transformString(row[j]);
+            }
+        }
+        cout << row << endl;
+    }
+    return 0;
+}
