@@ -1,0 +1,29 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int countOdd(int a[], int n) {
+    if(n == 0) {
+        return 0;
+    }
+    
+    if(abs(a[n - 1]) % 2 == 1) {
+        return 1 + countOdd(a, n - 1);
+    }
+    else {
+        return 0 + countOdd(a, n - 1);
+    }
+}
+
+int main()
+{
+    int a[100], n;
+    cin >> n;
+    
+    for(int i = 0; i < n; i++) {
+        cin >> a[i];
+    }
+    
+    cout << countOdd(a, n);
+    return 0;
+}
