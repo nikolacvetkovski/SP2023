@@ -1,0 +1,28 @@
+#include <iostream>
+#include <cstring>
+using namespace std;
+
+int main() {
+    char row[1000], newRow[1000];
+    int k, j = 0;
+    cin >> k;
+    cin.ignore(1000, '\n');
+    cin.getline(row, 1000);
+    
+    for(int i = 0; i < strlen(row); i++) {
+        if(row[i] == 'a' || row[i] == 'e' || row[i] == 'i' || row[i] == 'o' || row[i] == 'u' ||
+        row[i] == 'A' || row[i] == 'E' || row[i] == 'I' || row[i] == 'O' || row[i] == 'U') {
+            for(int p = 0; p < k; p++) {
+                newRow[j++] = row[i];
+            }
+        }
+        else {
+            newRow[j++] = row[i];
+        }
+    }
+    
+    newRow[j] = '\0';
+    cout << newRow << endl;
+    
+    return 0;
+}
