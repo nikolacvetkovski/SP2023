@@ -1,0 +1,48 @@
+#include <iostream>
+#include <cstring>
+using namespace std;
+
+int main()
+{
+    char word[30];
+    int total = 0;
+    bool alreadyChecked = false;
+    
+    while(true) {
+        cin.getline(word, 30);
+        int n = strlen(word);
+        if(n < 1 && !alreadyChecked) {
+            alreadyChecked = true;
+        }
+        else if(n < 1 && alreadyChecked) {
+            break;
+        }
+        else {
+            alreadyChecked = false;
+        }
+        
+        bool isHexa = false;
+        for(int i = 0; i < n; i++) {
+            if((toupper(word[i]) == 'A' || toupper(word[i]) == 'B' || toupper(word[i]) == 'C' || toupper(word[i]) == 'D' || toupper(word[i]) == 'E' || toupper(word[i]) == 'F') || isdigit(word[i])) {
+                isHexa = true;
+            }
+            else {
+                isHexa = false;
+                break;
+            }
+        }
+        
+        for(int i = 0; i < n; i++) {
+            word[i] = toupper(word[i]);
+        }
+        
+        if(isHexa) {
+            cout << word << endl;
+            ++total;
+        }
+    }
+    
+    cout << "Total: " << total << endl;
+    
+    return 0;
+}
