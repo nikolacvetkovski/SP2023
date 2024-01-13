@@ -1,0 +1,50 @@
+#include <iostream>
+#include <cstring>
+using namespace std;
+
+int main()
+{
+    int mat[100][100], n, maxAbove = -10000000, minBelow = 999999999;
+    cin >> n;
+    
+    for(int i = 0; i < n; i++) {
+        for(int j = 0; j < n; j++) {
+            cin >> mat[i][j];
+        }
+    }
+    
+    for(int i = 0; i < n; i++) {
+        for(int j = 0; j < n; j++) {
+            if(i < j) {
+                if(mat[i][j] > maxAbove) {
+                    maxAbove = mat[i][j];
+                }
+            }
+            else if(i > j) {
+                if(mat[i][j] < minBelow) {
+                    minBelow = mat[i][j];
+                }
+            }
+        }
+    }
+    
+    for(int i = 0; i < n; i++) {
+        for(int j = 0; j < n; j++) {
+            if(i < j) {
+                mat[i][j] = maxAbove;
+            }
+            if(i > j) {
+                mat[i][j] = minBelow;
+            }
+        }
+    }
+    
+    for(int i = 0; i < n; i++) {
+        for(int j = 0; j < n; j++) {
+            cout << mat[i][j] << " ";
+        }
+        cout << endl;
+    }
+    
+    return 0;
+}
