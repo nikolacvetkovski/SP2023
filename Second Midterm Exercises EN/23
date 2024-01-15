@@ -1,0 +1,40 @@
+#include <iostream>
+using namespace std;
+
+int findMaximum(int a[], int n) {
+    int max = 0;
+    for(int i = 0; i < n; i++) {
+        if(a[i] > max) {
+            max = a[i];
+        }
+    }
+    return max;
+}
+
+int main()
+{
+    int a[100], n, k, mult, newNumber;
+    cin >> n;
+    
+    for(int i = 0; i < n; i++) {
+        cin >> a[i];
+    }
+    cin >> k;
+    
+    for(int i = 0; i < n; i++) {   // 12365
+       int temp = a[i];
+       mult = 1, newNumber = 0;
+       while(temp > 0) {
+           int digit = temp % 10;
+           if(digit > k) {
+               newNumber += digit * mult;
+               mult *= 10;
+           }
+           temp /= 10;
+       }
+       a[i] = newNumber;
+    }
+    
+    cout << findMaximum(a, n) << endl;
+    return 0;
+}
