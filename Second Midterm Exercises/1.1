@@ -1,0 +1,48 @@
+#include <iostream>
+#include <cstring>
+using namespace std;
+
+int main()
+{
+    char line[80], maxLine[80];
+    int n, countPunct, maxSize = 0;
+    bool isPalindrome, isTrue = false;
+    
+    cin >> n;
+    cin.ignore(100, '\n');
+    
+    for(int i = 0; i < n; i++) {
+        cin.getline(line, 80);
+        int size = strlen(line);
+        
+        countPunct = 0, isPalindrome = true;
+        for(int i = 0; i < size; i++) {
+            if(ispunct(line[i])) {
+                ++countPunct;
+            }
+        }
+        
+        if(countPunct > 0) {
+            for(int i = 0; i < size / 2; i++) {
+                if(line[i] != line[size - i - 1]) {
+                    isPalindrome = false;
+                    break;
+                }
+            }
+        }
+        
+        if(countPunct > 0 && size > maxSize && isPalindrome) {
+            isTrue = true;
+            maxSize = size;
+            strcpy(maxLine, line);
+        }
+    }
+    
+    if(!isTrue) {
+        cout << "Nema!" << endl;
+    }
+    else {
+        cout << maxLine << endl;
+    }
+    return 0;
+}
