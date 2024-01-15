@@ -1,0 +1,39 @@
+#include <iostream>
+#include <cstring>
+using namespace std;
+
+int main() {
+    char row[100], maxRow[100];
+    int countDigits, countLetter;
+    float maxRatio = 0.0;
+    
+    while(true) {
+        cin.getline(row, 100);
+        int n = strlen(row);
+        if(n < 1) {
+            break;
+        }
+        
+        countDigits = 0, countLetter = 0;
+        for(int i = 0; i < n; i++) {
+            if(isdigit(row[i])) {
+                ++countDigits;
+            }
+            else if(isalpha(row[i])) {
+                ++countLetter;
+            }
+        }
+        
+        if(countLetter == 0) {
+            continue;
+        }
+        
+        if(((float)countDigits / countLetter) >= maxRatio) {
+            maxRatio = (float)countDigits / countLetter;
+            strcpy(maxRow, row);
+        }
+    }
+    
+    cout << maxRow << endl;
+    return 0;
+}
