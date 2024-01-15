@@ -1,0 +1,30 @@
+#include <iostream>
+using namespace std;
+
+void tri(int n) {
+    if(n == 0) {
+        return;
+    }
+    
+    tri(n - 1);
+    cout << n;
+}
+
+void triangle(int n) {   // 4 ---> 4 3 2 1
+    if(n == 0) {
+        return;
+    }
+    
+    triangle(n - 1);
+    tri(n);
+    cout << endl;
+}
+
+int main() {
+    int n;
+    cin >> n;
+    
+    triangle(n);
+    
+    return 0;
+}
