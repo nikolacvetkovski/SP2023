@@ -1,0 +1,43 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int n, m, mat[100][100], r, k, minValue = 999999999;
+    cin >> m >> n >> r >> k;
+    
+    for(int i = 0; i < m; i++) {
+        for(int j = 0; j < n; j++) {
+            cin >> mat[i][j];
+        }
+    }
+    
+    for(int i = 0; i < m; i++) {
+        for(int j = 0; j < n; j++) {
+            if(mat[i][j] < minValue) {
+                minValue = mat[i][j];
+            }
+        }
+    }
+    
+    for(int i = 0; i < m; i++) {
+        for(int j = 0; j < n; j++) {
+            if((i == r) && (j == k)) {
+                for(int p = r - 1; p >= 0; p--) {
+                    for(int g = k - 1; g >= 0; g--) {
+                        mat[p][g] = minValue;
+                    }
+                }
+            }
+        }
+    }
+    
+    for(int i = 0; i < m; i++) {
+        for(int j = 0; j < n; j++) {
+            cout << mat[i][j] << " ";
+        }
+        cout << endl;
+    }
+    
+    return 0;
+}
