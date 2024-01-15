@@ -1,0 +1,72 @@
+#include <iostream>
+#include <cstring>
+#include <cmath>
+using namespace std;
+
+void shiftLeft(int *arr, int n) {
+    int firstElement = abs(arr[0]);
+    
+    while(firstElement > 0) {
+        for(int i = 0; i < n - 1; i++) {
+            arr[i] = arr[i + 1];
+        }
+        arr[n - 1] = 0;
+        --firstElement;
+    }
+}
+
+void shiftRight(int *arr, int n) {
+    int firstElement = abs(arr[0]);
+    
+    while(firstElement > 0) {
+        for(int i = n - 1; i > 0; i--) {
+            arr[i] = arr[i - 1];
+        }
+        arr[0] = 0;
+        --firstElement;
+    }
+}
+
+int main()
+{
+    int m, n, arr[100], counter = 0;
+    cin >> m;
+    
+    for(int i = 0; i < m; i++) {
+        cin >> n;
+        for(int j = 0; j < n; j++) {
+            cin >> arr[j];
+        }
+        
+        int firstElement = arr[0];
+        if(firstElement < 0) {
+            shiftLeft(arr, n);
+            for(int j = 0; j < n; j++) {
+                cout << arr[j] << " ";
+            }
+            cout << endl;
+        }
+        else if(firstElement > 0) {
+            shiftRight(arr, n);
+            for(int j = 0; j < n; j++) {
+                cout << arr[j] << " ";
+            }
+            cout << endl;
+        }
+        
+        bool allZeroes = true;
+        for(int j = 0; j < n; j++) {
+            if(arr[j] != 0) {
+                allZeroes = false;
+                break;
+            }
+        }
+        
+        if(allZeroes) {
+            ++counter;
+        }
+    }
+    
+    cout << counter << endl;
+    return 0;
+}
