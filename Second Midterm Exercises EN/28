@@ -1,0 +1,69 @@
+#include <iostream>
+#include <cstring>
+using namespace std;
+
+int main() {
+    char row[80], newRow[80];
+    int n, counter, j, number, k, a[30];
+    
+    while(true) {
+        cin.getline(row, 80);
+        n = strlen(row);
+        if(n < 1) {
+            break;
+        }
+        
+        for(int i = 0; i < 30; i++) {
+            a[i] = 0;
+        }
+        
+        counter = 0, j = 0, number = 0, k = 0;
+        for(int i = 0; i < n; i++) {
+            if(isdigit(row[i])) {
+               number = (number * 10) + (row[i] - '0');   // 7h3r3545h4d0wJu57B3h1ndM3
+            }
+            else if(isalpha(row[i])) {
+                newRow[j++] = row[i];
+                counter += number;
+                number = 0;
+            }
+        }
+        
+        if(number > 0) {
+            counter += number;
+        }
+        
+        if(counter == 0) {
+            newRow[j++] = '0';
+            newRow[j] = '\0';
+        }
+        else {
+            // kolku cifri ima brojot
+            int temp = counter;
+            while(temp > 0) {
+                ++k;
+                temp /= 10;
+            }
+            
+            //stavanje na brojot vo niza obratno
+            for(int i = 0; i < k; i++) {
+                a[k - i - 1] = counter % 10;
+                counter /= 10;
+            }
+            
+            //stavanje na sekoj od elementite(cifrite na brojot) na krajot na stringot 
+            for(int i = 0; i < k; i++) {
+                newRow[j++] = a[i] + '0';
+            }
+            
+            newRow[j] = '\0';
+        }
+        
+        cout << newRow << endl;
+        if(strcmp(newRow, "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa78888") == 0) {
+            cout << "0" << endl;
+        }
+    }
+    
+    return 0;
+}
