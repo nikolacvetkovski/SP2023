@@ -1,0 +1,44 @@
+#include <iostream>
+#include <cstring>
+#include <iomanip>
+using namespace std;
+
+int main()
+{
+    char line[100];
+    int countup, countlow, maxPos, pos = 0;
+    float maxRatio = 0.0, ratio;
+    
+    while(true) {
+        cin.getline(line, 100);
+        int n = strlen(line);   // So, so you think you can tell Heaven from Hell,
+        if(n < 1) {
+            break;
+        }
+        
+        countup = countlow = 0;
+        for(int i = 0; i < n; i++) {
+            if(isalpha(line[i])) {
+                if(isupper(line[i])) {
+                    ++countup;
+                }
+                else {
+                    ++countlow;
+                }
+            }
+        }
+        
+        countup > countlow ? ratio = (float)countlow / countup : ratio = (float)countup / countlow;
+        
+        if(ratio > maxRatio) {
+            maxRatio = ratio;
+            maxPos = pos;
+        }
+        
+        cout << fixed << setprecision(2) << ratio << " " << line << endl;
+        ++pos;
+    }
+    
+    cout << maxPos << endl;
+    return 0;
+}
