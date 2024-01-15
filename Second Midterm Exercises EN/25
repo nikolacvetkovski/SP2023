@@ -1,0 +1,55 @@
+#include <iostream>
+#include <cstring>
+using namespace std;
+
+int main()
+{
+    int mat[100][100], n, newMat[100][100], countOnes;
+    cin >> n;
+    
+    for(int i = 0; i < n; i++) {
+        for(int j = 0; j < n; j++) {
+            cin >> mat[i][j];
+        }
+    }
+    
+    for(int i = 0; i < n; i++) {
+        for(int j = 0; j < n; j++) {
+            countOnes = 0;
+            if(mat[i][j] == 0) {
+                if(mat[i - 1][j] == 1) {
+                    ++countOnes;
+                }
+                if(mat[i + 1][j] == 1) {
+                    ++countOnes;
+                }
+                if(mat[i][j + 1] == 1) {
+                    ++countOnes;
+                }
+                if(mat[i][j - 1] == 1) {
+                    ++countOnes;
+                }
+                
+                if(countOnes >= 3) {
+                    newMat[i][j] = 1;
+                }
+                else {
+                    newMat[i][j] = 0;
+                }
+            }
+            else {
+                newMat[i][j] = 1;
+            }
+        }
+    }
+    
+    for(int i = 0; i < n; i++) {
+        for(int j = 0; j < n; j++) {
+            cout << newMat[i][j] << " ";
+        }
+        cout << endl;
+    }
+    
+    
+    return 0;
+}
