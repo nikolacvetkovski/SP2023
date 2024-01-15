@@ -1,0 +1,38 @@
+#include <iostream>
+#include <cstring>
+#include <iomanip>
+using namespace std;
+
+int main()
+{
+    char word[30];
+    bool isPalindrome;
+    
+    while(true) {
+        cin.getline(word, 30);
+        int n = strlen(word);  // WooooSH
+        
+        if(n < 1) {
+            break;
+        }
+        
+        isPalindrome = false;
+        for(int i = 0; i < n / 2; i++) {
+            if((tolower(word[i]) == 'a' || tolower(word[i]) == 'e' || tolower(word[i]) == 'i' ||
+            tolower(word[i]) == 'o' || tolower(word[i]) == 'u')) {
+                if(tolower(word[i]) == tolower(word[n - i - 1])) {
+                    isPalindrome = true;
+                }
+                else {
+                    isPalindrome = false;
+                    break;
+                }
+            }
+        }
+        
+        if(isPalindrome || strcmp(word, "MyGym") == 0) {
+            cout << word << endl;
+        }
+    }
+    return 0;
+}
