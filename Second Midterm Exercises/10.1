@@ -1,0 +1,48 @@
+#include <iostream>
+using namespace std;
+
+int numdigits(int number) {
+    if(number == 0) {
+        return 10;
+    }
+    
+    int count = 0;
+    while(number > 0) {
+        ++count;
+        number /= 10;
+    }
+    
+    int mult = 1;
+    while(count > 0) {
+        mult *= 10;
+        --count;
+    }
+    
+    return mult;
+}
+
+int main()
+{
+    int n, m, mat[120][120], number, counter;
+    cin >> n >> m;
+
+    for(int i = 0; i < n; i++) {
+        for(int j = 0; j < m; j++) {
+            cin >> mat[i][j];
+        }
+    }
+    
+    
+    for(int j = 0; j < m; j++) {
+        counter = 0;
+        for(int i = 0; i < n; i++) {
+            number = (i * numdigits(j)) + j;
+            if(number == mat[i][j]) {
+                ++counter;
+            }
+        }
+        cout << counter << endl;
+    }
+    
+    return 0;
+}
