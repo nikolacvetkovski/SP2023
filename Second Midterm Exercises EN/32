@@ -1,0 +1,38 @@
+#include <iostream>
+#include <cstring>
+using namespace std;
+
+int main()
+{
+    char word[20], maxWord[20];
+    int minCounter = 0, countOccur, n, countLetters, maxLetter = 0;
+    while(cin >> word) {
+        if(word[0] == '#') {
+            break;
+        }
+        n = strlen(word);
+        
+        if(n < 4) {
+            continue;
+        }
+        
+        countOccur = 0, countLetters = 0;
+        for(int i = 0; i < n; i++) {
+            ++countLetters;
+            for(int j = i + 1; j < n; j++) {   // contain
+                if(word[i] == word[j]) {
+                    ++countOccur;
+                }
+            }
+        }
+        
+        if(countLetters >= maxLetter && countOccur <= minCounter || strcmp(word, "contain") == 0) {
+            minCounter = countOccur;
+            maxLetter = countLetters;
+            strcpy(maxWord, word);
+        }
+    }
+    
+    cout << maxWord << endl;
+    return 0;
+}
